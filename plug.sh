@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
+echo "🔥 Creating vim subdirs🔥"
+mkdir ~/.vim
+mkdir ~/.vim/bundle
+mkdir ~/.vim/colors
+mkdir ~/.vim/autoload
 echo "🔥 Moving subdirectories to ~/.vim/🔥"
-mv ./bundle ~/.vim/bundle
-mv ./colors ~/.vim/colors
-mv ./autoload ~/.vim/colors
+mv ./bundle/* ~/.vim/bundle/
+mv ./colors/* ~/.vim/colors/
+mv ./autoload/* ~/.vim/autoload/
 mv ./.vimrc ~/.vimrc
 echo "🔥 Downloading plugins...🔥"
 git clone https://github.com/ctrlpvim/ctrlp.vim ~/.vim/bundle/ctrlp.vim
