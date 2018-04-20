@@ -1,0 +1,26 @@
+[user]
+	name = vvmk
+	email = vincentmasiello@gmail.com
+[push]
+	default = matching
+[credential]
+	helper = osxkeychain
+[core]
+	excludesfile = /Users/V/.gitignore
+	editor = vim
+[http "https://git.demo.localflynn.com"]
+	sslCAInfo = /Users/V/.flynn/ca-certs/default.pem
+[credential "https://git.demo.localflynn.com"]
+	helper = /usr/local/bin/flynn git-credentials
+[color]
+	ui = true
+[alias]
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	st = status
+	ch = checkout
+	br = branch
+	co = commit
+	ad = add
+	pom = push origin master
+	pod = push origin dev
+	ca = commit -a
