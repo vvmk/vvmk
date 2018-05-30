@@ -1,4 +1,3 @@
-
 #!/usr/bin/env bash
 echo "🔥 Creating vim subdirs🔥"
 mkdir ~/.vim
@@ -11,7 +10,6 @@ mv ./colors/* ~/.vim/colors/
 mv ./autoload/* ~/.vim/autoload/
 mv ./.vimrc ~/.vimrc
 echo "🔥 Downloading plugins...🔥"
-
 git clone git@github.com:vvmk/angular-cli.vim.git /Users/V/.vim/bundle/angular-cli.vim
 git clone https://github.com/ctrlpvim/ctrlp.vim.git /Users/V/.vim/bundle/ctrlp.vim
 git clone https://github.com/hdima/python-syntax.git /Users/V/.vim/bundle/python-syntax
@@ -30,11 +28,9 @@ git clone https://github.com/tpope/vim-sensible.git /Users/V/.vim/bundle/vim-sen
 git clone https://github.com/tpope/vim-sleuth.git /Users/V/.vim/bundle/vim-sleuth
 git clone https://github.com/tpope/vim-surround.git /Users/V/.vim/bundle/vim-surround
 git clone https://github.com/tpope/vim-unimpaired.git /Users/V/.vim/bundle/vim-unimpaired
-
 echo "🔥 Moving config🔥"
 mv ./.bash_profile ~/.bash_profile
 mv ./.bashrc ~/.bashrc
 mv ./.gitconfig ~/.gitconfig
-mv ./.gitignore_global ~/.gitignore_global
+mv ./.cvsignore ~/.cvsignore
 echo "🔥 Done!🔥"
-
