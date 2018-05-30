@@ -4,11 +4,6 @@ mkdir ~/.vim
 mkdir ~/.vim/bundle
 mkdir ~/.vim/colors
 mkdir ~/.vim/autoload
-echo "🔥 Moving subdirectories to ~/.vim/🔥"
-mv ./bundle/* ~/.vim/bundle/
-mv ./colors/* ~/.vim/colors/
-mv ./autoload/* ~/.vim/autoload/
-mv ./.vimrc ~/.vimrc
 echo "🔥 Downloading plugins...🔥"
 git clone git@github.com:vvmk/angular-cli.vim.git /Users/V/.vim/bundle/angular-cli.vim
 git clone https://github.com/ctrlpvim/ctrlp.vim.git /Users/V/.vim/bundle/ctrlp.vim
@@ -28,7 +23,9 @@ git clone https://github.com/tpope/vim-sensible.git /Users/V/.vim/bundle/vim-sen
 git clone https://github.com/tpope/vim-sleuth.git /Users/V/.vim/bundle/vim-sleuth
 git clone https://github.com/tpope/vim-surround.git /Users/V/.vim/bundle/vim-surround
 git clone https://github.com/tpope/vim-unimpaired.git /Users/V/.vim/bundle/vim-unimpaired
-echo "🔥 Moving config🔥"
+echo "🔥 Putting things where they belong...🔥"
+mv ./autoload/* ~/.vim/autoload/
+mv ./.vimrc ~/.vimrc
 mv ./.bash_profile ~/.bash_profile
 mv ./.bashrc ~/.bashrc
 mv ./.gitconfig ~/.gitconfig
