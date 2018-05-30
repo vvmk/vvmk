@@ -5,6 +5,7 @@ cd ~/.vim/
 
 echo 🔥 Copying files...🔥
 
+cp ~/.vimrc ~/.vim/
 cp ~/.cvsignore ~/.vim/
 cp ~/.gitconfig ~/.vim/
 cp ~/.bash_profile ~/.vim/
@@ -18,10 +19,6 @@ mkdir ~/.vim
 mkdir ~/.vim/bundle
 mkdir ~/.vim/colors
 mkdir ~/.vim/autoload
-echo "🔥 Moving subdirectories to ~/.vim/🔥"
-mv ./colors/* ~/.vim/colors/
-mv ./autoload/* ~/.vim/autoload/
-mv ./.vimrc ~/.vimrc
 echo "🔥 Downloading plugins...🔥"' >~/.vim/landing.sh
 
 # the revised first half 
@@ -32,7 +29,9 @@ cat ~/.vim/vvtemppart1 | ggrep -Po '^.*github.com(:|/).+/\K.*(?=\.git)' | xargs 
 # join em
 paste -d " " ~/.vim/vvtemppart1 ~/.vim/vvtemppart2 >>~/.vim/landing.sh
 
-echo 'echo "🔥 Moving config🔥"
+echo 'echo "🔥 Putting things where they belong...🔥"
+mv ./autoload/* ~/.vim/autoload/
+mv ./.vimrc ~/.vimrc
 mv ./.bash_profile ~/.bash_profile
 mv ./.bashrc ~/.bashrc
 mv ./.gitconfig ~/.gitconfig
@@ -42,9 +41,9 @@ echo "🔥 Done!🔥"' >> ~/.vim/landing.sh
 # clean up
 rm ~/.vim/vvtemppart*
 
-echo 🔥 Adding dot files to commit🔥
+echo 🔥 Git...🔥
 
-git add .cvsignore .gitconfig .bash_profile .bashrc landing.sh colors/*
+git add .vimrc .cvsignore .gitconfig .bash_profile .bashrc landing.sh colors/*
 git commit -m "run auto-update"
 git push origin master
 
