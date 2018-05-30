@@ -11,4 +11,4 @@ Session.vim
 .AppleDouble
 foo
 foo.*
-.scratch
+*.scratch
