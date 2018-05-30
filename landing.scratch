@@ -10,7 +10,6 @@ mv ./colors/* ~/.vim/colors/
 mv ./autoload/* ~/.vim/autoload/
 mv ./.vimrc ~/.vimrc
 echo "🔥 Downloading plugins...🔥"
-git clone https://github.com/ctrlpvim/ctrlp.vim ~/.vim/bundle/ctrlp.vim
 git clone https://github.com/godlygeek/tabular ~/.vim/bundle/tabular
 git clone https://github.com/tpope/vim-surround ~/.vim/bundle/vim-surround
 git clone https://github.com/tpope/vim-rails ~/.vim/bundle/vim-rails
@@ -25,3 +24,16 @@ mv ./.bashrc ~/.bashrc
 mv ./.gitconfig ~/.gitconfig
 mv ./.gitignore_global ~/.gitignore_global
 echo "🔥 Done!🔥"
+# gets the repo url of each bundle installed in ~/.vim/bundles: 
+find ~/.vim/bundle/*/.git/config | xargs -n 1 ggrep -Po 'url = \K.*.git'
+# prepends 'git clone ' and appends ' ~/.vim/bundle/whatever
+cat ~/.vim/greptest | xargs -n 1 -I {} bash -c 'echo git\ clone\  {} \ ~/.vim/bundle/whatev;'
+# creates a second file with the clone target directories
+cat ~/.vim/parsetest | ggrep -Po '^.*github.com/.+/\K.*(?=\.git)' | xargs -n 1 -I {} bash -c 'echo ~/.vim/bundle/{};'
+
+# the revised first half 
+find ~/.vim/bundle/*/.git/config | xargs -n 1 ggrep -Po 'url = \K.*.git' | xargs -n 1 -I {} bash -c 'echo git clone {}' >~/.vim/clone
+# then create the second half from the first
+cat ~/.vim/clone | ggrep -Po '^.*github.com(:|/).+/\K.*(?=\.git)' | xargs -n 1 -I {} bash -c 'echo ~/.vim/bundle/{};' >~/.vim/cloneargs
+# join em
+paste -d " " ~/.vim/clone ~/.vim/cloneargs >~/.vim/clonevimplugs.sh
