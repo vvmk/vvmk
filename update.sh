@@ -43,7 +43,7 @@ rm ~/.vim/vvtemppart*
 
 echo 🔥 Git...🔥
 
-git add .vimrc .cvsignore .gitconfig .bash_profile .bashrc landing.sh colors/*
+git add .vimrc .cvsignore .gitconfig .bash_profile .bashrc landing.sh
 git commit -m "run auto-update"
 git push origin master
 
