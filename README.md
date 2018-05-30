@@ -1,10 +1,15 @@
+### **Note to future vince/disclaimer to anyone else:**  
+  
+update.sh will only work if you have:  
+    + write permission on the master branch of the containing repo
+    + the same (fairy vanilla) local file structure that it looks for. 
 
-**Note to future vince/anyone else:** update.sh will only work for you if you 
-fork first (or copy it into your own repo) and have the same local file 
-structure. It is not intended for use by anyone other than myself (for now) and 
-no guarantee is made that it will function properly for anyone.
+It is not intended for use by anyone other than myself (for now) and 
+no guarantee is made that it will function properly for anyone. That said, feel
+free to manipulate it to your heart's content.
 
 When moving to a new machine you'll have to move things into place, or run the
-landing script if you like the setup and it will create/move things for you
+landing script if you like the (fairly vanilla) setup and it will create/move 
+things for you.
 
 -past vince
