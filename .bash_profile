@@ -9,11 +9,7 @@ export PS1="\[\033[36m\]\u\[\033[0m\]\$\[\e[0m\] "
 export CLICOLOR=1
 export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 export GREP_OPTIONS="--color"
+alias grep="/usr/bin/grep $GREP_OPTIONS"
+unset GREP_OPTIONS
 alias ls='ls -GFh'
 source /Users/V/.bashrc
-function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
-function ohayo() {
-    echo "Good Morning, $USER"
-    brew doctor;
-    brew upgrade;
-}

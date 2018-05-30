@@ -6,7 +6,7 @@
 [credential]
 	helper = osxkeychain
 [core]
-	excludesfile = /Users/V/.gitignore
+	excludesfile = ~/.cvsignore
 	editor = vim
 [http "https://git.demo.localflynn.com"]
 	sslCAInfo = /Users/V/.flynn/ca-certs/default.pem
@@ -24,3 +24,4 @@
 	pom = push origin master
 	pod = push origin dev
 	ca = commit -a
+	aliases = config --get-regexp ^alias\\.
