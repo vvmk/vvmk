@@ -44,4 +44,7 @@ function ohayo() {
     brew upgrade
     bash -c '~/.vim/update.sh'
 }
+mvnquick() {
+    mvn archetype:generate -DgroupId=rocks.zipcode -DartifactId=mavenTest -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+}
 

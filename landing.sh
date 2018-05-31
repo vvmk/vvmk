@@ -9,7 +9,7 @@ git clone git@github.com:vvmk/angular-cli.vim.git /Users/V/.vim/bundle/angular-c
 git clone https://github.com/hdima/python-syntax.git /Users/V/.vim/bundle/python-syntax
 git clone https://github.com/felixhummel/setcolors.vim.git /Users/V/.vim/bundle/setcolors.vim
 git clone git://github.com/godlygeek/tabular.git /Users/V/.vim/bundle/tabular
-git clone git@github.com:vvmk/typescript-vim.git /Users/V/.vim/bundle/typescript-vim
+git clone git@github.com:vvmk/typescript-vim-vvmk.git /Users/V/.vim/bundle/typescript-vim-vvmk
 git clone git://github.com/tpope/vim-bundler.git /Users/V/.vim/bundle/vim-bundler
 git clone https://github.com/flazz/vim-colorschemes.git /Users/V/.vim/bundle/vim-colorschemes
 git clone https://github.com/tpope/vim-dispatch.git /Users/V/.vim/bundle/vim-dispatch
