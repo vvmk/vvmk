@@ -6,13 +6,11 @@ mkdir ~/.vim/colors
 mkdir ~/.vim/autoload
 echo "🔥 Downloading plugins...🔥"
 git clone git@github.com:vvmk/angular-cli.vim.git /Users/V/.vim/bundle/angular-cli.vim
-git clone https://github.com/ctrlpvim/ctrlp.vim.git /Users/V/.vim/bundle/ctrlp.vim
 git clone https://github.com/hdima/python-syntax.git /Users/V/.vim/bundle/python-syntax
 git clone https://github.com/felixhummel/setcolors.vim.git /Users/V/.vim/bundle/setcolors.vim
 git clone git://github.com/godlygeek/tabular.git /Users/V/.vim/bundle/tabular
 git clone https://github.com/leafgarland/typescript-vim.git /Users/V/.vim/bundle/typescript-vim
 git clone git://github.com/tpope/vim-bundler.git /Users/V/.vim/bundle/vim-bundler
-git clone https://github.com/altercation/vim-colors-solarized.git /Users/V/.vim/bundle/vim-colors-solarized
 git clone https://github.com/flazz/vim-colorschemes.git /Users/V/.vim/bundle/vim-colorschemes
 git clone https://github.com/tpope/vim-dispatch.git /Users/V/.vim/bundle/vim-dispatch
 git clone https://github.com/tpope/vim-fugitive.git /Users/V/.vim/bundle/vim-fugitive
@@ -23,6 +21,7 @@ git clone https://github.com/tpope/vim-sensible.git /Users/V/.vim/bundle/vim-sen
 git clone https://github.com/tpope/vim-sleuth.git /Users/V/.vim/bundle/vim-sleuth
 git clone https://github.com/tpope/vim-surround.git /Users/V/.vim/bundle/vim-surround
 git clone https://github.com/tpope/vim-unimpaired.git /Users/V/.vim/bundle/vim-unimpaired
+git clone https://github.com/tpope/vim-vinegar.git /Users/V/.vim/bundle/vim-vinegar
 echo "🔥 Putting things where they belong...🔥"
 mv ./autoload/* ~/.vim/autoload/
 mv ./.vimrc ~/.vimrc
