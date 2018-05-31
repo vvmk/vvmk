@@ -9,6 +9,7 @@ cp ~/.vimrc ~/.vim/
 cp ~/.cvsignore ~/.vim/
 cp ~/.gitconfig ~/.vim/
 cp ~/.bash_profile ~/.vim/
+cp ~/.profile ~/.vim/
 cp ~/.bashrc ~/.vim
 
 echo 🔥 Generating landing script...🔥
@@ -33,6 +34,7 @@ echo 'echo "🔥 Putting things where they belong...🔥"
 mv ./autoload/* ~/.vim/autoload/
 mv ./.vimrc ~/.vimrc
 mv ./.bash_profile ~/.bash_profile
+mv ./.profile ~/.profile
 mv ./.bashrc ~/.bashrc
 mv ./.gitconfig ~/.gitconfig
 mv ./.cvsignore ~/.cvsignore
@@ -43,7 +45,7 @@ rm ~/.vim/vvtemppart*
 
 echo 🔥 Git...🔥
 
-git add .vimrc .cvsignore .gitconfig .bash_profile .bashrc landing.sh
+git add .vimrc .cvsignore .gitconfig .bash_profile .bashrc landing.sh .profile
 git commit -m "run auto-update"
 git push origin master
 
