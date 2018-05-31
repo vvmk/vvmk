@@ -7,7 +7,10 @@ syntax: glob
 Session.vim
 /tags
 /doc/tags
+.netrwhist
+
 .DS_Store
+.DS_Store?
 .AppleDouble
 foo
 foo.*
