@@ -26,6 +26,7 @@ echo "🔥 Putting things where they belong...🔥"
 mv ./autoload/* ~/.vim/autoload/
 mv ./.vimrc ~/.vimrc
 mv ./.bash_profile ~/.bash_profile
+mv ./.profile ~/.profile
 mv ./.bashrc ~/.bashrc
 mv ./.gitconfig ~/.gitconfig
 mv ./.cvsignore ~/.cvsignore
