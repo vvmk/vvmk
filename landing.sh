@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-echo "🔥 Creating vim subdirs🔥"
+echo "🙈 Make dirs..."
 mkdir ~/.vim
 mkdir ~/.vim/bundle
 mkdir ~/.vim/colors
 mkdir ~/.vim/autoload
-echo "🔥 Downloading plugins...🔥"
+echo "🙉 Clone vim plugins..."
 git clone git@github.com:vvmk/angular-cli.vim.git /Users/V/.vim/bundle/angular-cli.vim
 git clone https://github.com/hdima/python-syntax.git /Users/V/.vim/bundle/python-syntax
 git clone https://github.com/felixhummel/setcolors.vim.git /Users/V/.vim/bundle/setcolors.vim
@@ -22,7 +22,7 @@ git clone https://github.com/tpope/vim-sleuth.git /Users/V/.vim/bundle/vim-sleut
 git clone https://github.com/tpope/vim-surround.git /Users/V/.vim/bundle/vim-surround
 git clone https://github.com/tpope/vim-unimpaired.git /Users/V/.vim/bundle/vim-unimpaired
 git clone https://github.com/tpope/vim-vinegar.git /Users/V/.vim/bundle/vim-vinegar
-echo "🔥 Putting things where they belong...🔥"
+echo "🙊 Putting things where they belong..."
 mv ./autoload/* ~/.vim/autoload/
 mv ./.vimrc ~/.vimrc
 mv ./.bash_profile ~/.bash_profile
@@ -30,4 +30,4 @@ mv ./.profile ~/.profile
 mv ./.bashrc ~/.bashrc
 mv ./.gitconfig ~/.gitconfig
 mv ./.cvsignore ~/.cvsignore
-echo "🔥 Done!🔥"
+echo "🐒 Done!"

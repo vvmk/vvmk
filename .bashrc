@@ -25,7 +25,7 @@ unset GREP_OPTIONS
 # }
 
 # hacks
-mkcd () {
+mkcd() {
     case "$1" in
       */..|*/../) cd -- "$1";; # that doesn't make any sense unless the directory already exists
       /*/../*) (cd "${1%/../*}/.." && mkdir -p "./${1##*/../}") && cd -- "$1";;
@@ -35,16 +35,16 @@ mkcd () {
       *) mkdir -p "./$1" && cd "./$1";;
     esac
 }
-function gi() {
+gi() {
     curl -L -s https://www.gitignore.io/api/$@ ;
 }
-function ohayo() {
+ohayo() {
     echo "Good Morning, $USER"
     brew doctor
     brew upgrade
     bash -c '~/.vim/update.sh'
 }
 mvnquick() {
-    mvn archetype:generate -DgroupId=rocks.zipcode -DartifactId=mavenTest -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+    mvn archetype:generate -DgroupId=$1 -DartifactId=$2 -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 }
 
