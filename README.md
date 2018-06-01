@@ -3,7 +3,7 @@
 update.sh will only work if you have:
 
 * write permission on the master branch of the containing repo
-* the same (fairy vanilla) local file structure that it looks for. 
+* the same (fairly vanilla) local file structure that it looks for. 
 
 It is not intended for use by anyone other than myself (for now) and 
 no guarantee is made that it will function properly for anyone. That said, feel

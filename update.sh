@@ -3,7 +3,7 @@
 CWD=$(pwd)
 cd ~/.vim/
 
-echo 🔥 Copying files...🔥
+echo 🙈 Copying files...
 
 cp ~/.vimrc ~/.vim/
 cp ~/.cvsignore ~/.vim/
@@ -12,15 +12,15 @@ cp ~/.bash_profile ~/.vim/
 cp ~/.profile ~/.vim/
 cp ~/.bashrc ~/.vim
 
-echo 🔥 Generating landing script...🔥
+echo 🙉 Generating landing script...
 
 echo '#!/usr/bin/env bash
-echo "🔥 Creating vim subdirs🔥"
+echo "🙈 Make dirs..."
 mkdir ~/.vim
 mkdir ~/.vim/bundle
 mkdir ~/.vim/colors
 mkdir ~/.vim/autoload
-echo "🔥 Downloading plugins...🔥"' >~/.vim/landing.sh
+echo "🙉 Clone vim plugins..."' >~/.vim/landing.sh
 
 # the revised first half 
 find ~/.vim/bundle/*/.git/config | xargs -n 1 ggrep -Po 'url = \K.*.git' | xargs -n 1 -I {} bash -c 'echo git clone {}' >~/.vim/vvtemppart1
@@ -30,7 +30,7 @@ cat ~/.vim/vvtemppart1 | ggrep -Po '^.*github.com(:|/).+/\K.*(?=\.git)' | xargs 
 # join em
 paste -d " " ~/.vim/vvtemppart1 ~/.vim/vvtemppart2 >>~/.vim/landing.sh
 
-echo 'echo "🔥 Putting things where they belong...🔥"
+echo 'echo "🙊 Putting things where they belong..."
 mv ./autoload/* ~/.vim/autoload/
 mv ./.vimrc ~/.vimrc
 mv ./.bash_profile ~/.bash_profile
@@ -38,12 +38,12 @@ mv ./.profile ~/.profile
 mv ./.bashrc ~/.bashrc
 mv ./.gitconfig ~/.gitconfig
 mv ./.cvsignore ~/.cvsignore
-echo "🔥 Done!🔥"' >> ~/.vim/landing.sh
+echo "🐒 Done!"' >> ~/.vim/landing.sh
 
 # clean up
 rm ~/.vim/vvtemppart*
 
-echo 🔥 Git...🔥
+echo 🙊 Git...
 
 git add .vimrc .cvsignore .gitconfig .bash_profile .bashrc landing.sh .profile
 git commit -m "run auto-update"
@@ -52,4 +52,4 @@ git push origin master
 # back to where we started
 cd $CWD
 
-echo '🔥 Done! 🔥'
+echo '🐒 Done! '
