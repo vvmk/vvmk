@@ -22,7 +22,7 @@ git clone https://github.com/tpope/vim-sleuth.git /Users/V/.vim/bundle/vim-sleut
 git clone https://github.com/tpope/vim-surround.git /Users/V/.vim/bundle/vim-surround
 git clone https://github.com/tpope/vim-unimpaired.git /Users/V/.vim/bundle/vim-unimpaired
 git clone https://github.com/tpope/vim-vinegar.git /Users/V/.vim/bundle/vim-vinegar
-echo "🙊 Putting things where they belong..."
+echo "🙊 Put things where they belong..."
 mv ./autoload/* ~/.vim/autoload/
 mv ./.vimrc ~/.vimrc
 mv ./.bash_profile ~/.bash_profile
