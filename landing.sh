@@ -1,27 +1,30 @@
 #!/usr/bin/env bash
-echo "🙈 Make dirs..."
+rm -rf ~/.vim/bundle
+rm -rf ~/.vim/colors
+rm -rf ~/.vim/autoload
+echo "🙈  Make dirs..."
 mkdir ~/.vim
 mkdir ~/.vim/bundle
 mkdir ~/.vim/colors
 mkdir ~/.vim/autoload
 echo "🙉 Clone vim plugins..."
-git clone git@github.com:vvmk/angular-cli.vim.git /Users/V/.vim/bundle/angular-cli.vim
-git clone https://github.com/hdima/python-syntax.git /Users/V/.vim/bundle/python-syntax
-git clone https://github.com/felixhummel/setcolors.vim.git /Users/V/.vim/bundle/setcolors.vim
-git clone git://github.com/godlygeek/tabular.git /Users/V/.vim/bundle/tabular
-git clone git@github.com:vvmk/typescript-vim-vvmk.git /Users/V/.vim/bundle/typescript-vim-vvmk
-git clone git://github.com/tpope/vim-bundler.git /Users/V/.vim/bundle/vim-bundler
-git clone https://github.com/flazz/vim-colorschemes.git /Users/V/.vim/bundle/vim-colorschemes
-git clone https://github.com/tpope/vim-dispatch.git /Users/V/.vim/bundle/vim-dispatch
-git clone https://github.com/tpope/vim-fugitive.git /Users/V/.vim/bundle/vim-fugitive
-git clone https://github.com/fatih/vim-go.git /Users/V/.vim/bundle/vim-go
-git clone https://github.com/pangloss/vim-javascript.git /Users/V/.vim/bundle/vim-javascript
-git clone git://github.com/tpope/vim-rails.git /Users/V/.vim/bundle/vim-rails
-git clone https://github.com/tpope/vim-sensible.git /Users/V/.vim/bundle/vim-sensible
-git clone https://github.com/tpope/vim-sleuth.git /Users/V/.vim/bundle/vim-sleuth
-git clone https://github.com/tpope/vim-surround.git /Users/V/.vim/bundle/vim-surround
-git clone https://github.com/tpope/vim-unimpaired.git /Users/V/.vim/bundle/vim-unimpaired
-git clone https://github.com/tpope/vim-vinegar.git /Users/V/.vim/bundle/vim-vinegar
+git clone https://github.com/vvmk/angular-cli.vim.git ~/.vim/bundle/angular-cli.vim
+git clone https://github.com/hdima/python-syntax.git ~/.vim/bundle/python-syntax
+git clone https://github.com/felixhummel/setcolors.vim.git ~/.vim/bundle/setcolors.vim
+git clone git://github.com/godlygeek/tabular.git ~/.vim/bundle/tabular
+git clone https://github.com/vvmk/typescript-vim-vvmk.git ~/.vim/bundle/typescript-vim-vvmk
+git clone git://github.com/tpope/vim-bundler.git ~/.vim/bundle/vim-bundler
+git clone https://github.com/flazz/vim-colorschemes.git ~/.vim/bundle/vim-colorschemes
+git clone https://github.com/tpope/vim-dispatch.git ~/.vim/bundle/vim-dispatch
+git clone https://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive
+git clone https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go
+git clone https://github.com/pangloss/vim-javascript.git ~/.vim/bundle/vim-javascript
+git clone git://github.com/tpope/vim-rails.git ~/.vim/bundle/vim-rails
+git clone https://github.com/tpope/vim-sensible.git ~/.vim/bundle/vim-sensible
+git clone https://github.com/tpope/vim-sleuth.git ~/.vim/bundle/vim-sleuth
+git clone https://github.com/tpope/vim-surround.git ~/.vim/bundle/vim-surround
+git clone https://github.com/tpope/vim-unimpaired.git ~/.vim/bundle/vim-unimpaired
+git clone https://github.com/tpope/vim-vinegar.git ~/.vim/bundle/vim-vinegar
 echo "🙊 Put things where they belong..."
 mv ./autoload/* ~/.vim/autoload/
 mv ./.vimrc ~/.vimrc

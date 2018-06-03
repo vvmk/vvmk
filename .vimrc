@@ -26,7 +26,6 @@ execute pathogen#infect()
 " Formatting {
     set tabstop=4
     set shiftwidth=4
-    set nowrap
     set expandtab "tabs are spaces
     set softtabstop=4 "backspace can delete indent
     set comments=s1:/\*,mb:\*,elx:\*/ "auto format comment blocks
@@ -39,10 +38,6 @@ execute pathogen#infect()
     map <C-L> <C-W>l<C-W><CR>
     map <C-H> <C-W>h<C-W><CR>
     map <C-K> <C-W>k<C-W><CR>
-
-    " j,k goes to next row of wrapped text, not next line to file
-    nnoremap j gj
-    nnoremap k gk
 " }
 " Shortcuts {
     "change working dir to that of the current file
@@ -52,7 +47,7 @@ execute pathogen#infect()
 " ExRemappings {
     cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
-    let mapleader=','
+    "let mapleader=','
     map <leader>e :e %%
     map <leader>es :sp %%
     map <leader>ev :vsp %%
