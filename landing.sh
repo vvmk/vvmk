@@ -7,6 +7,7 @@ mkdir ~/.vim
 mkdir ~/.vim/bundle
 mkdir ~/.vim/colors
 mkdir ~/.vim/autoload
+mkdir -p ~/.git_template/hooks
 echo "🙉 Clone vim plugins..."
 git clone https://github.com/vvmk/angular-cli.vim.git ~/.vim/bundle/angular-cli.vim
 git clone https://github.com/hdima/python-syntax.git ~/.vim/bundle/python-syntax
@@ -33,4 +34,5 @@ mv ./.profile ~/.profile
 mv ./.bashrc ~/.bashrc
 mv ./.gitconfig ~/.gitconfig
 mv ./.cvsignore ~/.cvsignore
-echo "🐒 Done!"
+mv ./.git_template/hooks/* ~/.git_template/hooks/
+echo "🐒 Done! (make sure git hooks are executable and brew install ctags)"
