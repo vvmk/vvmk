@@ -10,7 +10,8 @@ cp ~/.cvsignore ~/.vim/
 cp ~/.gitconfig ~/.vim/
 cp ~/.bash_profile ~/.vim/
 cp ~/.profile ~/.vim/
-cp ~/.bashrc ~/.vim
+cp ~/.bashrc ~/.vim/
+cp -R ~/.git_template ~/.vim/
 
 echo 🙉 Generating landing script...
 
@@ -23,6 +24,7 @@ mkdir ~/.vim
 mkdir ~/.vim/bundle
 mkdir ~/.vim/colors
 mkdir ~/.vim/autoload
+mkdir -p ~/.git_template/hooks
 echo "🙉 Clone vim plugins..."' >~/.vim/landing.sh
 
 # the revised first half 
@@ -42,15 +44,16 @@ mv ./.profile ~/.profile
 mv ./.bashrc ~/.bashrc
 mv ./.gitconfig ~/.gitconfig
 mv ./.cvsignore ~/.cvsignore
-echo "🐒 Done!"' >> ~/.vim/landing.sh
+mv ./.git_template/hooks/* ~/.git_template/hooks/
+echo "🐒 Done! (make sure git hooks are executable and brew install ctags)"' >> ~/.vim/landing.sh
 
 # clean up
 rm ~/.vim/vvtemppart* *.orig
 
 echo 🙊 Git...
 
-git add .vimrc .cvsignore .gitconfig .bash_profile .bashrc landing.sh .profile autoload
-git commit -m "run auto-update"
+git add .vimrc .cvsignore .gitconfig .bash_profile .bashrc landing.sh .profile autoload ./.git_template
+git commit -m "auto-update"
 git push origin master
 
 # back to where we started
