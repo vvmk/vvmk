@@ -15,7 +15,10 @@ cp ~/.bashrc ~/.vim
 echo 🙉 Generating landing script...
 
 echo '#!/usr/bin/env bash
-echo "🙈 Make dirs..."
+rm -rf ~/.vim/bundle
+rm -rf ~/.vim/colors
+rm -rf ~/.vim/autoload
+echo "🙈  Make dirs..."
 mkdir ~/.vim
 mkdir ~/.vim/bundle
 mkdir ~/.vim/colors
@@ -25,12 +28,13 @@ echo "🙉 Clone vim plugins..."' >~/.vim/landing.sh
 # the revised first half 
 find ~/.vim/bundle/*/.git/config | xargs -n 1 ggrep -Po 'url = \K.*.git' | xargs -n 1 -I {} bash -c 'echo git clone {}' >~/.vim/vvtemppart1
 # then create the second half from the first
-cat ~/.vim/vvtemppart1 | ggrep -Po '^.*github.com(:|/).+/\K.*(?=\.git)' | xargs -n 1 -I {} bash -c 'echo ~/.vim/bundle/{};' >~/.vim/vvtemppart2
-
+cat ~/.vim/vvtemppart1 | ggrep -Po '^.*github.com(:|/).+/\K.*(?=\.git)' | xargs -n 1 -I {} bash -c 'echo \~/.vim/bundle/{};' >~/.vim/vvtemppart2
 # join em
 paste -d " " ~/.vim/vvtemppart1 ~/.vim/vvtemppart2 >>~/.vim/landing.sh
+# lazy fix for repos using the ssh link
+sed -i .orig "s/git@github.com:/https:\/\/github.com\//g" landing.sh
 
-echo 'echo "🙊 Putting things where they belong..."
+echo 'echo "🙊 Put things where they belong..."
 mv ./autoload/* ~/.vim/autoload/
 mv ./.vimrc ~/.vimrc
 mv ./.bash_profile ~/.bash_profile
@@ -41,11 +45,11 @@ mv ./.cvsignore ~/.cvsignore
 echo "🐒 Done!"' >> ~/.vim/landing.sh
 
 # clean up
-rm ~/.vim/vvtemppart*
+rm ~/.vim/vvtemppart* *.orig
 
 echo 🙊 Git...
 
-git add .vimrc .cvsignore .gitconfig .bash_profile .bashrc landing.sh .profile
+git add .vimrc .cvsignore .gitconfig .bash_profile .bashrc landing.sh .profile autoload
 git commit -m "run auto-update"
 git push origin master
 
