@@ -4,6 +4,7 @@ export XAMPPPATH=/Applications/XAMPP/xamppfiles
 export PATH=$GOPATH/bin:$PATH:$XAMPPPATH:$XAMPPPATH/bin:/Users/V/code/exercism/go
 eval $(/usr/libexec/path_helper -s)
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export SSR="/Users/V/dev/ShfflShineRepeat/Client/SHFFLShineRepeat"
 
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
