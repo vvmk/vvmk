@@ -48,4 +48,8 @@ ohayo() {
 mvnquick() {
     mvn archetype:generate -DgroupId=$1 -DartifactId=$2 -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 }
+usejava() {
+    export JAVA_HOME=`/usr/libexec/java_home -v $1`
+    java -version
+}
 

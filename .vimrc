@@ -30,6 +30,7 @@ execute pathogen#infect()
     set softtabstop=4 "backspace can delete indent
     set comments=s1:/\*,mb:\*,elx:\*/ "auto format comment blocks
     set autowrite
+    set nowrap
 " }
 " Key (re)Mappings {
     " easier window/tab navigation

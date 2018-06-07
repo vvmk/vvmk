@@ -8,6 +8,7 @@
 [core]
 	excludesfile = ~/.cvsignore
 	editor = vim
+	autocrlf = input
 [http "https://git.demo.localflynn.com"]
 	sslCAInfo = /Users/V/.flynn/ca-certs/default.pem
 [credential "https://git.demo.localflynn.com"]
