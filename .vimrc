@@ -32,13 +32,15 @@ execute pathogen#infect()
     set autowrite
     set nowrap
 " }
-" Key (re)Mappings {
-    " easier window/tab navigation
+" Splits {
     map <C-J> <C-W>j<C-W><CR>
     map <C-K> <C-W>k<C-W><CR>
     map <C-L> <C-W>l<C-W><CR>
     map <C-H> <C-W>h<C-W><CR>
     map <C-K> <C-W>k<C-W><CR>
+
+    set splitbelow
+    set splitright
 " }
 " Shortcuts {
     "change working dir to that of the current file
