@@ -34,5 +34,6 @@ mv ./.profile ~/.profile
 mv ./.bashrc ~/.bashrc
 mv ./.gitconfig ~/.gitconfig
 mv ./.cvsignore ~/.cvsignore
+mv ./.tmux.conf ~/.tmux.conf
 mv ./.git_template/hooks/* ~/.git_template/hooks/
 echo "🐒 Done! (make sure git hooks are executable and brew install ctags)"
