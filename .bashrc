@@ -43,7 +43,7 @@ ohayo() {
     echo "Good Morning, $USER"
     brew doctor
     brew upgrade
-    bash -c '~/.vim/update.sh "auto-update"'
+    bash -c '~/.vim/update'
 }
 mvnquick() {
     mvn archetype:generate -DgroupId=$1 -DartifactId=$2 -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
