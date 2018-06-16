@@ -1,13 +1,13 @@
 # path dump
-export GOPATH=/Users/V/code/go
-export XAMPPPATH=/Applications/XAMPP/xamppfiles
-export PATH=$GOPATH/bin:$PATH:$XAMPPPATH:$XAMPPPATH/bin:/Users/V/code/exercism/go
-eval $(/usr/libexec/path_helper -s)
+export GOPATH=/Users/V/src/go
+export PATH=$PATH:$GOPATH/bin:/Users/V/code/exercism/go
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export SSR="/Users/V/dev/ShfflShineRepeat/Client/SHFFLShineRepeat"
-
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+# path helper...still need this?
+eval $(/usr/libexec/path_helper -s)
+
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
@@ -46,10 +46,11 @@ ohayo() {
     bash -c '~/.vim/update'
 }
 mvnquick() {
-    mvn archetype:generate -DgroupId=$1 -DartifactId=$2 -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+    mvn archetype:generate -DgroupId=$1 -DartifactId=$2 \
+        -DarchetypeArtifactId=maven-archetype-quickstart \
+        -DinteractiveMode=false
 }
 usejava() {
     export JAVA_HOME=`/usr/libexec/java_home -v $1`
     java -version
 }
-

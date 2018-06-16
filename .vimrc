@@ -60,6 +60,8 @@ execute pathogen#infect()
     map <leader>as :ESpec<CR>
     map <leader>am :EModule<CR>
     map <leader>css :EStylesheet<CR>
+    " vim-go command - go to currentfile_test.go
+    map <leader>gt :GoAlternate<CR>
 " }
 " plugin/vars {
     let g:netrw_banner = 0
