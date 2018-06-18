@@ -22,6 +22,9 @@ execute pathogen#infect()
     "  which includes the 'runtimepath' that pathogen.vim manipulates.  This 
     "  can cause other problems too, so I recommend turning that behavior off.
     set sessionoptions-=options
+
+    " Make Vim more liberal about creating hidden buffers
+    set hidden
 " }
 " Formatting {
     set tabstop=4
