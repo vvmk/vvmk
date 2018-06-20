@@ -58,13 +58,15 @@ execute pathogen#infect()
     map <leader>es :sp %%
     map <leader>ev :vsp %%
     map <leader>et :tabe %%
-    map <leader>ac :EComponent<CR>
-    map <leader>at :ETemplate<CR>
-    map <leader>as :ESpec<CR>
-    map <leader>am :EModule<CR>
-    map <leader>css :EStylesheet<CR>
+    " keep an empty space after the following commands, save many keystrokes
+    map <leader>ac :EComponent 
+    map <leader>at :ETemplate 
+    map <leader>as :ESpec 
+    map <leader>am :EModule 
+    map <leader>ay :EStylesheet 
     " vim-go command - go to currentfile_test.go
     map <leader>gt :GoAlternate<CR>
+    map <leader>gb :GoBuild<CR>
 " }
 " plugin/vars {
     let g:netrw_banner = 0
