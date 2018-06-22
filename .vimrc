@@ -60,9 +60,13 @@ execute pathogen#infect()
     map <leader>et :tabe %%
     " keep an empty space after the following commands, save many keystrokes
     map <leader>ac :EComponent 
+    map <leader>acc :EComponent<CR>
     map <leader>at :ETemplate 
-    map <leader>as :ESpec 
+    map <leader>att :ETemplate<CR>
+    map <leader>as :EService 
+    map <leader>ap :ESpec<CR>
     map <leader>am :EModule 
+    map <leader>amm :EModule<CR>
     map <leader>ay :EStylesheet 
     " vim-go command - go to currentfile_test.go
     map <leader>gt :GoAlternate<CR>
