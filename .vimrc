@@ -90,4 +90,10 @@ execute pathogen#infect()
     autocmd VimEnter * if globpath('.,..','node_modules/@angular') != '' | call angular_cli#init() | endif
 
     let python_highlight_all = 1
+
+    " hopefully avoid vim getting confused by vue file syntax
+    autocmd FileType vue syntax sync fromstart
+    
+    " stop this goofy vue plugin checking for EVERY pre-processor language
+    let g:vue_disable_pre_processors=1
 " }

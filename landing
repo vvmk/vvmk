@@ -16,6 +16,7 @@ git clone git://github.com/godlygeek/tabular.git ~/.vim/bundle/tabular
 git clone https://github.com/vvmk/typescript-vim-vvmk.git ~/.vim/bundle/typescript-vim-vvmk
 git clone git://github.com/tpope/vim-bundler.git ~/.vim/bundle/vim-bundler
 git clone https://github.com/flazz/vim-colorschemes.git ~/.vim/bundle/vim-colorschemes
+git clone https://github.com/tpope/vim-commentary.git ~/.vim/bundle/vim-commentary
 git clone https://github.com/tpope/vim-dispatch.git ~/.vim/bundle/vim-dispatch
 git clone https://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive
 git clone https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go
@@ -26,6 +27,7 @@ git clone https://github.com/tpope/vim-sleuth.git ~/.vim/bundle/vim-sleuth
 git clone https://github.com/tpope/vim-surround.git ~/.vim/bundle/vim-surround
 git clone https://github.com/tpope/vim-unimpaired.git ~/.vim/bundle/vim-unimpaired
 git clone https://github.com/tpope/vim-vinegar.git ~/.vim/bundle/vim-vinegar
+git clone https://github.com/posva/vim-vue.git ~/.vim/bundle/vim-vue
 echo "🙊 Put things where they belong..."
 mv ./autoload/* ~/.vim/autoload/
 mv ./.vimrc ~/.vimrc
