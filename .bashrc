@@ -2,19 +2,20 @@
 export GOPATH=/Users/V/go
 export PATH=$PATH:$GOPATH/bin:/Users/V/code/exercism/go
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-# path helper...still need this?
 eval $(/usr/libexec/path_helper -s)
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
-# shell customization
+# shell customization {
 export PS1="\[\033[36m\]\u\[\033[0m\]\$\[\e[0m\] "
 export CLICOLOR=1
 export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
+# }
 
 # aliases
 alias ls='ls -GFh'
@@ -25,7 +26,6 @@ alias grep="/usr/bin/grep $GREP_OPTIONS"
 unset GREP_OPTIONS
 # }
 
-# hacks
 mkcd() {
     case "$1" in
       */..|*/../) cd -- "$1";; # that doesn't make any sense unless the directory already exists
