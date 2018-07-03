@@ -1,5 +1,5 @@
 # path dump
-export GOPATH=/Users/V/src/go
+export GOPATH=/Users/V/go
 export PATH=$PATH:$GOPATH/bin:/Users/V/code/exercism/go
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 # Load RVM into a shell session *as a function*
@@ -53,4 +53,7 @@ mvnquick() {
 usejava() {
     export JAVA_HOME=`/usr/libexec/java_home -v $1`
     java -version
+}
+dockersh() {
+    docker exec -it "$1" bash
 }
