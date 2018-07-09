@@ -18,6 +18,12 @@ execute pathogen#infect()
         set t_Co=16
     endif
 
+    " experiment with iTerm escape codes
+    if exists('$ITERM_PROFILE')
+        silent !printf '\e]50;SetProfile=LineSpaced\x7'
+        autocmd VimLeave * silent !printf '\e]50;SetProfile=Default\x7'
+    endif
+
     "  Tim Pope says: sessions default to capturing all global options, 
     "  which includes the 'runtimepath' that pathogen.vim manipulates.  This 
     "  can cause other problems too, so I recommend turning that behavior off.
