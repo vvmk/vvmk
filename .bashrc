@@ -1,7 +1,9 @@
 # path dump
 export GOPATH=/Users/V/go
 export PATH=$PATH:$GOPATH/bin:/Users/V/code/exercism/go
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.composer/vendor/bin:$PATH"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$HOME/.composer/vendor/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
 
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
