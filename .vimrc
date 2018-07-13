@@ -8,6 +8,8 @@ execute pathogen#infect()
     set tabpagemax=50
     set showcmd "show partial commands in status line, selected chars in v mode
     set linespace=0 "no extra linespace between rows
+
+    " TODO: this is broken now for some reason, it turns grey at column ~51
     autocmd Filetype gitcommit setlocal spell textwidth=72
 
     " Trim whitespace in py files
