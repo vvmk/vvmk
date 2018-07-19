@@ -33,6 +33,13 @@ execute pathogen#infect()
 
     " Make Vim more liberal about creating hidden buffers
     set hidden
+
+    " didn't miss these til they were gone
+    command WQ wq
+    command Wq wq
+    command W w
+    command Q q
+
 " }
 " Formatting {
     set tabstop=4
@@ -61,24 +68,12 @@ execute pathogen#infect()
 " ExRemappings {
     cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
-    "let mapleader=','
     map <leader>e :e %%
     map <leader>es :sp %%
     map <leader>ev :vsp %%
     map <leader>et :tabe %%
-    " keep an empty space after the following commands, save many keystrokes
-    map <leader>ac :EComponent 
-    map <leader>acc :EComponent<CR>
-    map <leader>at :ETemplate 
-    map <leader>att :ETemplate<CR>
-    map <leader>as :EService 
-    map <leader>ap :ESpec<CR>
-    map <leader>am :EModule 
-    map <leader>amm :EModule<CR>
-    map <leader>ay :EStylesheet 
-    " vim-go command - go to currentfile_test.go
-    map <leader>gt :GoAlternate<CR>
-    map <leader>gb :GoBuild<CR>
+
+    autocmd FileType go map <leader>t :GoAlternate<CR>
 " }
 " plugin/vars {
     let g:netrw_banner = 0
@@ -95,7 +90,24 @@ execute pathogen#infect()
 
     let g:angular_cli_use_dispatch = 1
 
+    " Many plugins assume all greps are the same. I keep this here as a
+    " quick/temporary solution if I don't have time/it isn't worth it to 
+    " submit a PR
+    let g:gnu_grep = 'ggrep'
+
     autocmd VimEnter * if globpath('.,..','node_modules/@angular') != '' | call angular_cli#init() | endif
+
+    " keep an empty space after the following commands, save many keystrokes
+    " TODO: conditionally load only when angular_cli.vim is loaded
+    map <leader>ac :EComponent 
+    map <leader>acc :EComponent<CR>
+    map <leader>at :ETemplate 
+    map <leader>att :ETemplate<CR>
+    map <leader>as :EService 
+    map <leader>am :EModule 
+    map <leader>amm :EModule<CR>
+    map <leader>ass :EStylesheet<CR> 
+    map <leader>t :ESpec<CR>
 
     let python_highlight_all = 1
 
