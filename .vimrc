@@ -3,7 +3,10 @@ execute pathogen#infect()
     filetype plugin indent on
     syntax on
     set number
-    colorscheme onedark
+    "
+    colorscheme dracula
+    " colorscheme onedark
+    "
     set history=1000 "default history 20..pitiful
     set tabpagemax=50
     set showcmd "show partial commands in status line, selected chars in v mode
@@ -72,6 +75,10 @@ execute pathogen#infect()
     map <leader>es :sp %%
     map <leader>ev :vsp %%
     map <leader>et :tabe %%
+
+    " Experimental Dispatch maps
+    nnoremap <bar> :Dispatch<CR>
+    map <leader>\ :Dispatch!<CR>
 
     autocmd FileType go map <leader>t :GoAlternate<CR>
 " }

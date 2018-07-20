@@ -11,6 +11,7 @@ mkdir -p ~/.git_template/hooks
 echo "🙉 Clone vim plugins..."
 git clone https://github.com/vvmk/angular-cli.vim.git ~/.vim/bundle/angular-cli.vim
 git clone https://github.com/mattn/emmet-vim.git ~/.vim/bundle/emmet-vim
+git clone https://github.com/StanAngeloff/php.vim.git ~/.vim/bundle/php.vim
 git clone https://github.com/hdima/python-syntax.git ~/.vim/bundle/python-syntax
 git clone https://github.com/felixhummel/setcolors.vim.git ~/.vim/bundle/setcolors.vim
 git clone git://github.com/godlygeek/tabular.git ~/.vim/bundle/tabular
