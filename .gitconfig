@@ -28,3 +28,8 @@
 	aliases = config --get-regexp ^alias\\.
 [init]
 	templatedir = ~/.git_template
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+[mergetool]
+	prompt = false
