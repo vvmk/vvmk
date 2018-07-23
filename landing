@@ -24,12 +24,14 @@ git clone https://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive
 git clone https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go
 git clone https://github.com/pangloss/vim-javascript.git ~/.vim/bundle/vim-javascript
 git clone git://github.com/tpope/vim-rails.git ~/.vim/bundle/vim-rails
+git clone https://github.com/tpope/vim-repeat.git ~/.vim/bundle/vim-repeat
 git clone https://github.com/tpope/vim-sensible.git ~/.vim/bundle/vim-sensible
 git clone https://github.com/tpope/vim-sleuth.git ~/.vim/bundle/vim-sleuth
 git clone https://github.com/tpope/vim-surround.git ~/.vim/bundle/vim-surround
 git clone https://github.com/tpope/vim-unimpaired.git ~/.vim/bundle/vim-unimpaired
 git clone https://github.com/tpope/vim-vinegar.git ~/.vim/bundle/vim-vinegar
 git clone https://github.com/posva/vim-vue.git ~/.vim/bundle/vim-vue
+git clone https://github.com/wesQ3/vim-windowswap.git ~/.vim/bundle/vim-windowswap
 echo "🙊 Put things where they belong..."
 mv ./autoload/* ~/.vim/autoload/
 mv ./.vimrc ~/.vimrc
