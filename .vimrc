@@ -3,14 +3,13 @@ execute pathogen#infect()
     filetype plugin indent on
     syntax on
     set number
-    "
+
     colorscheme dracula
     " colorscheme onedark
-    "
-    set history=1000 "default history 20..pitiful
+
+    set history=1000
     set tabpagemax=50
     set showcmd "show partial commands in status line, selected chars in v mode
-    set linespace=0 "no extra linespace between rows
 
     " TODO: this is broken now for some reason, it turns grey at column ~51
     autocmd Filetype gitcommit setlocal spell textwidth=72
@@ -37,7 +36,6 @@ execute pathogen#infect()
     " Make Vim more liberal about creating hidden buffers
     set hidden
 
-    " didn't miss these til they were gone
     command WQ wq
     command Wq wq
     command W w
@@ -54,33 +52,32 @@ execute pathogen#infect()
     set nowrap
 " }
 " Splits {
-    map <C-J> <C-W>j<C-W><CR>
-    map <C-K> <C-W>k<C-W><CR>
-    map <C-L> <C-W>l<C-W><CR>
-    map <C-H> <C-W>h<C-W><CR>
-    map <C-K> <C-W>k<C-W><CR>
+    noremap <C-J> <C-W>j<C-W><CR>
+    noremap <C-K> <C-W>k<C-W><CR>
+    noremap <C-L> <C-W>l<C-W><CR>
+    noremap <C-H> <C-W>h<C-W><CR>
+    noremap <C-K> <C-W>k<C-W><CR>
 
     set splitbelow
     set splitright
 " }
 " Shortcuts {
-    "change working dir to that of the current file
     cmap cwd lcd %:p:h
     cmap cd. lcd %:p:h
 " }
 " ExRemappings {
     cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
-    map <leader>e :e %%
-    map <leader>es :sp %%
-    map <leader>ev :vsp %%
-    map <leader>et :tabe %%
+    noremap <leader>e :e %%
+    noremap <leader>es :sp %%
+    noremap <leader>ev :vsp %%
+    noremap <leader>et :tabe %%
 
     " Experimental Dispatch maps
-    nnoremap <bar> :Dispatch<CR>
-    map <leader>\ :Dispatch!<CR>
+    noremap <bar> :Dispatch<CR>
+    noremap <leader>\ :Dispatch!<CR>
 
-    autocmd FileType go map <leader>t :GoAlternate<CR>
+    autocmd FileType go noremap <leader>t :GoAlternate<CR>
 " }
 " plugin/vars {
     let g:netrw_banner = 0
@@ -123,4 +120,8 @@ execute pathogen#infect()
     
     " stop this goofy vue plugin checking for EVERY pre-processor language
     let g:vue_disable_pre_processors=1
+" }
+" abbreviations {
+    iabbrev cadc complexaesthetic.com
+    iabbrev @@ v@complexaesthetic.com
 " }
