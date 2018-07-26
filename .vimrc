@@ -62,16 +62,13 @@ execute pathogen#infect()
     set splitright
 " }
 " Shortcuts {
-    cmap cwd lcd %:p:h
-    cmap cd. lcd %:p:h
-" }
-" ExRemappings {
-    cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+    cmap cwd lcd %:p:h cmap cd. lcd %:p:h " } ExRemappings {
+    cmap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
-    noremap <leader>e :e %%
-    noremap <leader>es :sp %%
-    noremap <leader>ev :vsp %%
-    noremap <leader>et :tabe %%
+    map <leader>e :e %%
+    map <leader>es :sp %%
+    map <leader>ev :vsp %%
+    map <leader>et :tabe %%
 
     " Experimental Dispatch maps
     noremap <bar> :Dispatch<CR>
