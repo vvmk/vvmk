@@ -11,6 +11,9 @@ execute pathogen#infect()
     set tabpagemax=50
     set showcmd "show partial commands in status line, selected chars in v mode
 
+    " default status line + fugitive
+    set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
+
     " TODO: this is broken now for some reason, it turns grey at column ~51
     autocmd Filetype gitcommit setlocal spell textwidth=72
 
@@ -50,6 +53,8 @@ execute pathogen#infect()
     set comments=s1:/\*,mb:\*,elx:\*/ "auto format comment blocks
     set autowrite
     set nowrap
+
+    nnoremap == gg=G``
 " }
 " Splits {
     noremap <C-J> <C-W>j<C-W><CR>
@@ -90,6 +95,8 @@ execute pathogen#infect()
     let g:go_highlight_types = 1
 
     let g:angular_cli_use_dispatch = 1
+
+    let g:user_emmet_leader_key = '<C-e>'
 
     " Many plugins assume all greps are the same. I keep this here as a
     " quick/temporary solution if I don't have time/it isn't worth it to 
