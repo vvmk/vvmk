@@ -4,8 +4,14 @@ execute pathogen#infect()
     syntax on
     set number
 
+    set background=dark
+    " TODO: move to a list, autoload into setcolors list
     colorscheme dracula
     " colorscheme onedark
+    " colorscheme ps_color
+    " colorscheme ir_black
+    " colorscheme pyte
+    " colorscheme mayansmoke " light
 
     set history=1000
     set tabpagemax=50
@@ -20,9 +26,9 @@ execute pathogen#infect()
     " Trim whitespace in py files
     autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
 
-    " Allow color schemes to do bright colors without forcing bold.
-    " if &t_Co == 8 && $TERM !~# '^linux\|^Eterm' set t_Co=16
-    " endif
+    if &t_Co == 8 && $TERM !~# '^linux\|^Eterm'
+        set t_Co=16
+    endif
 
     " experiment with iTerm escape codes
     if exists('$ITERM_PROFILE')
