@@ -21,9 +21,8 @@ execute pathogen#infect()
     autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
 
     " Allow color schemes to do bright colors without forcing bold.
-    if &t_Co == 8 && $TERM !~# '^linux\|^Eterm'
-        set t_Co=16
-    endif
+    " if &t_Co == 8 && $TERM !~# '^linux\|^Eterm' set t_Co=16
+    " endif
 
     " experiment with iTerm escape codes
     if exists('$ITERM_PROFILE')
@@ -128,4 +127,17 @@ execute pathogen#infect()
 " abbreviations {
     iabbrev cadc complexaesthetic.com
     iabbrev @@ v@complexaesthetic.com
+" }
+" ALE {
+    let g:ale_fix_on_save = 1
+    let g:ale_fixers = {
+                \ 'javascript': ['eslint'],
+                \ 'typescript': ['tslint'],
+                \ 'css': ['prettier'],
+                \ 'scss': ['prettier'],
+                \ 'vue': ['prettier'],
+                \ 'markdown': ['prettier'],
+                \ 'json': ['prettier'],
+    \}
+
 " }
