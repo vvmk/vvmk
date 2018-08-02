@@ -4,6 +4,11 @@ execute pathogen#infect()
     syntax on
     set number
 
+    scriptencoding utf-8
+    set termencoding=utf-8
+    set encoding=utf-8
+    set ambiwidth=double
+
     set background=dark
     " TODO: move to a list, autoload into setcolors list
     colorscheme dracula
@@ -17,7 +22,6 @@ execute pathogen#infect()
     set tabpagemax=50
     set showcmd "show partial commands in status line, selected chars in v mode
 
-    " default status line + fugitive
     set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 
     " TODO: this is broken now for some reason, it turns grey at column ~51
@@ -41,7 +45,6 @@ execute pathogen#infect()
     "  can cause other problems too, so I recommend turning that behavior off.
     set sessionoptions-=options
 
-    " Make Vim more liberal about creating hidden buffers
     set hidden
 
     command WQ wq
@@ -85,6 +88,11 @@ execute pathogen#infect()
     noremap <leader>\ :Dispatch!<CR>
 
     autocmd FileType go noremap <leader>t :GoAlternate<CR>
+
+    " Fugitive
+    map <leader>gs :Gstatus<CR>
+    map <leader>gw :Gwrite<CR>
+    map <leader>gcc :Gcommit<CR>
 " }
 " plugin/vars {
     let g:netrw_banner = 0
@@ -134,7 +142,14 @@ execute pathogen#infect()
     iabbrev cadc complexaesthetic.com
     iabbrev @@ v@complexaesthetic.com
 " }
-" ALE {
+" [pale-]ale {
+    let g:ale_sign_error = '🙊'
+    let g:ale_sign_warning = '🙈'
+    let g:ale_set_highlights = 0
+    let g:ale_lint_on_insert_leave = 1
+    let g:ale_lint_on_text_changed = 0
+    let g:ale_sign_column_always = 0
+
     let g:ale_fix_on_save = 1
     let g:ale_fixers = {
                 \ 'javascript': ['eslint'],

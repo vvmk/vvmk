@@ -9,9 +9,9 @@ mkdir ~/.vim/colors
 mkdir ~/.vim/autoload
 mkdir -p ~/.git_template/hooks
 echo "🙉 Clone vim plugins..."
-git clone https://github.com/w0rp/ale.git ~/.vim/bundle/ale
 git clone https://github.com/vvmk/angular-cli.vim.git ~/.vim/bundle/angular-cli.vim
 git clone https://github.com/mattn/emmet-vim.git ~/.vim/bundle/emmet-vim
+git clone https://github.com/vvmk/pale-ale.git ~/.vim/bundle/pale-ale
 git clone https://github.com/StanAngeloff/php.vim.git ~/.vim/bundle/php.vim
 git clone https://github.com/hdima/python-syntax.git ~/.vim/bundle/python-syntax
 git clone https://github.com/felixhummel/setcolors.vim.git ~/.vim/bundle/setcolors.vim
@@ -37,6 +37,7 @@ git clone https://github.com/tpope/vim-vinegar.git ~/.vim/bundle/vim-vinegar
 git clone https://github.com/vvmk/vim-vionic.git ~/.vim/bundle/vim-vionic
 git clone https://github.com/posva/vim-vue.git ~/.vim/bundle/vim-vue
 git clone https://github.com/wesQ3/vim-windowswap.git ~/.vim/bundle/vim-windowswap
+git clone https://github.com/HerringtonDarkholme/yats.vim.git ~/.vim/bundle/yats.vim
 echo "🙊 Put things where they belong..."
 mv ./autoload/* ~/.vim/autoload/
 mv ./.vimrc ~/.vimrc
