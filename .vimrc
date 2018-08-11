@@ -68,6 +68,9 @@ execute pathogen#infect()
     set splitbelow
     set splitright
 " }
+" Arpeggio {
+    call arpeggio#map('i', '', 0, 'jk', '<Esc>')
+" }
 " Shortcuts {
     cmap cwd lcd %:p:h cmap cd. lcd %:p:h " } ExRemappings {
     cmap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'

@@ -18,6 +18,7 @@ git clone https://github.com/hdima/python-syntax.git ~/.vim/bundle/python-syntax
 git clone https://github.com/felixhummel/setcolors.vim.git ~/.vim/bundle/setcolors.vim
 git clone git://github.com/godlygeek/tabular.git ~/.vim/bundle/tabular
 git clone https://github.com/vvmk/typescript-vim-vvmk.git ~/.vim/bundle/typescript-vim-vvmk
+git clone https://github.com/kana/vim-arpeggio.git ~/.vim/bundle/vim-arpeggio
 git clone git://github.com/tpope/vim-bundler.git ~/.vim/bundle/vim-bundler
 git clone https://github.com/flazz/vim-colorschemes.git ~/.vim/bundle/vim-colorschemes
 git clone https://github.com/tpope/vim-commentary.git ~/.vim/bundle/vim-commentary
