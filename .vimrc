@@ -67,9 +67,21 @@ execute pathogen#infect()
 
     set splitbelow
     set splitright
+
+    map <leader>oo :only<CR>
 " }
 " Arpeggio {
+" TODO: when angular-cli.vim is loaded, arpeggio#map 'n', '', 0, 'ng' '{???}')
+" where {???} enters command-pending mode or whatever its called (like a
+" <leader>.
+" 'ng' will act as a leader for angular-cli.vim navigation commands.
+" example: 
+"   'ng' em  calls :EModule
+"   'ng' vc  calls :VComponent
+"   'ng' ss  calls :SService
     call arpeggio#map('i', '', 0, 'jk', '<Esc>')
+    call arpeggio#map('n', '', 0, 'v-', ':Vexplore! %%<CR>')
+    call arpeggio#map('n', '', 0, 'h-', ':Hexplore %%<CR>')
 " }
 " Shortcuts {
     cmap cwd lcd %:p:h cmap cd. lcd %:p:h " } ExRemappings {
