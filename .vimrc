@@ -101,6 +101,7 @@ execute pathogen#infect()
 "   'ng' ss  calls :SService
     call arpeggio#map('i', '', 0, 'jk', '<Esc>')
     call arpeggio#map('n', '', 0, '`<Space>', ':Dispatch<Space>')
+    call arpeggio#map('n', '', 0, '`1', ':Dispatch!<Space>')
     " call arpeggio#map('n', '', 0, 'vi-', ':Vexplore! %%<CR>')
     " call arpeggio#map('n', '', 0, 'h-', ':Hexplore %%<CR>')
 " }
