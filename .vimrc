@@ -99,9 +99,17 @@ execute pathogen#infect()
 "   'ng' em  calls :EModule
 "   'ng' vc  calls :VComponent
 "   'ng' ss  calls :SService
+"
+"   " misc
     call arpeggio#map('i', '', 0, 'jk', '<Esc>')
     call arpeggio#map('n', '', 0, '`<Space>', ':Dispatch<Space>')
     call arpeggio#map('n', '', 0, '`1', ':Dispatch!<Space>')
+    call arpeggio#map('n', '', 0, 'cl', ':ccl<CR>')
+
+    " ng
+    call arpeggio#map('n', '', 0, 'ac', ':EComponent<CR>')
+    call arpeggio#map('n', '', 0, 'at', ':ETemplate<CR>')
+    call arpeggio#map('n', '', 0, 'as', ':EStylesheet<CR>')
     " call arpeggio#map('n', '', 0, 'vi-', ':Vexplore! %%<CR>')
     " call arpeggio#map('n', '', 0, 'h-', ':Hexplore %%<CR>')
 " }
@@ -132,13 +140,13 @@ execute pathogen#infect()
     " keep an empty space after the following commands, save many keystrokes
     " TODO: conditionally load only when angular_cli.vim is loaded
     map <leader>ac :EComponent 
-    map <leader>acc :EComponent<CR>
+    " map <leader>acc :EComponent<CR>
     map <leader>at :ETemplate 
-    map <leader>att :ETemplate<CR>
+    " map <leader>att :ETemplate<CR>
     map <leader>as :EService 
     map <leader>am :EModule 
     map <leader>amm :EModule<CR>
-    map <leader>ass :EStylesheet<CR> 
+    " map <leader>ass :EStylesheet<CR> 
     map <leader>t :ESpec<CR>
 
     let python_highlight_all = 1
