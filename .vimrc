@@ -56,7 +56,7 @@ execute pathogen#infect()
     set autowrite
     set nowrap
 
-    nnoremap == gg=G``
+    nnoremap == gg=G``zz
 " }
 " Splits {
     noremap <C-J> <C-W>j<C-W><CR>
