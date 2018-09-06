@@ -46,6 +46,8 @@ execute pathogen#infect()
     command W w
     command Q q
 
+    let mapleader = ","
+
 " }
 " Formatting {
     set tabstop=4
@@ -68,7 +70,7 @@ execute pathogen#infect()
     set splitbelow
     set splitright
 
-    map <leader>oo :only<CR>
+    map <leader>o :only<CR>
 " }
 " Shortcuts {
     cmap cwd lcd %:p:h cmap cd. lcd %:p:h " } ExRemappings {
@@ -89,6 +91,11 @@ execute pathogen#infect()
     map <leader>gs :Gstatus<CR>
     map <leader>gw :Gwrite<CR>
     map <leader>gcc :Gcommit<CR>
+    
+    " misc
+    map <leader>w :w<CR>
+    map <leader>q :wq<CR>
+    map <leader>q1 :q!<CR>
 " }
 " Arpeggio {
 " TODO: when angular-cli.vim is loaded, arpeggio#map 'n', '', 0, 'ng' '{???}')

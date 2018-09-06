@@ -59,3 +59,6 @@ usejava() {
 dockerbash() {
     docker exec -it "$1" bash
 }
+
+# added by travis gem
+[ -f /Users/V/.travis/travis.sh ] && source /Users/V/.travis/travis.sh
