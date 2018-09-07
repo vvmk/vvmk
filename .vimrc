@@ -17,7 +17,7 @@ execute pathogen#infect()
     " colorscheme ir_black
     " colorscheme pyte
     " colorscheme mayansmoke " light
-
+ 
     set history=1000
     set tabpagemax=50
     set showcmd "show partial commands in status line, selected chars in v mode
@@ -46,7 +46,8 @@ execute pathogen#infect()
     command W w
     command Q q
 
-    let mapleader = ","
+    "PHP
+    map <leader>pt a$this->
 
 " }
 " Formatting {
@@ -93,9 +94,12 @@ execute pathogen#infect()
     map <leader>gcc :Gcommit<CR>
     
     " misc
+
     map <leader>w :w<CR>
     map <leader>q :wq<CR>
     map <leader>q1 :q!<CR>
+
+    imap <C-U> <Esc>gUiwea 
 " }
 " Arpeggio {
 " TODO: when angular-cli.vim is loaded, arpeggio#map 'n', '', 0, 'ng' '{???}')
