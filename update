@@ -36,6 +36,7 @@ cat ~/.vim/vvtemppart1 | ggrep -Po '^.*github.com(:|/).+/\K.*(?=\.git)' | xargs 
 paste -d " " ~/.vim/vvtemppart1 ~/.vim/vvtemppart2 >>~/.vim/landing
 # lazy fix for repos using the ssh link
 sed -i .orig "s/git@github.com:/https:\/\/github.com\//g" landing
+sed -i .orig "s/git:/https:/g" landing
 
 echo 'echo "🙊 Put things where they belong..."
 mv ./autoload/* ~/.vim/autoload/
