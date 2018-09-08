@@ -4,6 +4,8 @@ rm -rf ~/.vim/colors
 rm -rf ~/.vim/autoload
 echo "🙈  Make dirs..."
 mkdir ~/.vim
+mkdir ~/.vim/backup
+mkdir ~/.vim/swap
 mkdir ~/.vim/bundle
 mkdir ~/.vim/colors
 mkdir ~/.vim/autoload
