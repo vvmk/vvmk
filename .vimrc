@@ -4,33 +4,33 @@ set nocompatible
 if &t_Co == 8 && $TERM !~# '^linux\|^Eterm'
     set t_Co=16
 endif
-" set t_Co=256 gui only?
+set t_Co=256 " gui only?
 
 scriptencoding utf-8
 set termencoding=utf-8
 set encoding=utf-8
 set ambiwidth=double
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set timeout timeoutlen=300 ttimeoutlen=100
+set backspace=indent,eol,start
+set ignorecase
+set smartcase
+set visualbell
+set noerrorbells
 
 " experimental
 set showmode
 set smarttab
-set tags=tags
+" set tags=tags
 set shiftround
-set backspace=indent,eol,start
 set autoindent
 set copyindent
-set ignorecase
-set smartcase
-set timeout timeoutlen=200 ttimeoutlen=100
-set visualbell
-set noerrorbells
 noremap <bar> :Dispatch<CR>
 noremap <leader>\ :Dispatch!<CR>
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swap//
 "end experimental
 
-"colors{{{
+" colors
 set background=dark
 " TODO: move to a list, autoload into setcolors list
 colorscheme dracula
@@ -41,7 +41,7 @@ colorscheme dracula
 " colorscheme xoria256
 " colorscheme mayansmoke " light
 
-"general
+" general
 filetype plugin indent on
 syntax on
 set number
@@ -52,7 +52,7 @@ set hidden
 set tabstop=4
 set shiftwidth=4
 set expandtab "tabs are spaces
-set softtabstop=4 "backspace can delete indent
+set softtabstop=4
 set comments=s1:/\*,mb:\*,elx:\*/ "auto format comment blocks
 set autowrite
 set nowrap
@@ -78,16 +78,15 @@ command Q q
 nnoremap == gg=G``zz
 imap <C-U> <Esc>gUiwea 
 
-"splits
+" splits
 noremap <C-J> <C-W>j<C-W><CR>
 noremap <C-K> <C-W>k<C-W><CR>
 noremap <C-L> <C-W>l<C-W><CR>
 noremap <C-H> <C-W>h<C-W><CR>
 noremap <C-K> <C-W>k<C-W><CR>
 map <leader>o :only<CR>
-nmap 
 
-"files
+" files
 cmap cwd lcd %:p:h cmap cd. lcd %:p:h " } ExRemappings {
 cmap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 map <leader>e :e %%
@@ -221,7 +220,6 @@ autocmd FileType vue syntax sync fromstart
 " stop this goofy vue plugin checking for EVERY pre-processor language
 let g:vue_disable_pre_processors=1
 
-
 let g:ale_sign_error = '🙊'
 let g:ale_sign_warning = '🙈'
 let g:ale_set_highlights = 0
@@ -239,5 +237,3 @@ let g:ale_fixers = {
             \ 'markdown': ['prettier'],
             \ 'json': ['prettier'],
             \}
-
-" }
