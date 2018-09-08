@@ -4,42 +4,17 @@ set nocompatible
 if &t_Co == 8 && $TERM !~# '^linux\|^Eterm'
     set t_Co=16
 endif
-set t_Co=256 " gui only?
-
-scriptencoding utf-8
-set termencoding=utf-8
-set encoding=utf-8
-set ambiwidth=double
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swap//
-set timeout timeoutlen=300 ttimeoutlen=100
-set backspace=indent,eol,start
-set ignorecase
-set smartcase
-set visualbell
-set noerrorbells
 
 " experimental
 set showmode
 set smarttab
-" set tags=tags
+set tags=tags
 set shiftround
 set autoindent
 set copyindent
 noremap <bar> :Dispatch<CR>
 noremap <leader>\ :Dispatch!<CR>
 "end experimental
-
-" colors
-set background=dark
-" TODO: move to a list, autoload into setcolors list
-colorscheme dracula
-" colorscheme onedark
-" colorscheme ps_color
-" colorscheme ir_black
-" colorscheme pyte
-" colorscheme xoria256
-" colorscheme mayansmoke " light
 
 " general
 filetype plugin indent on
@@ -58,6 +33,30 @@ set autowrite
 set nowrap
 set splitbelow
 set splitright
+scriptencoding utf-8
+set termencoding=utf-8
+set encoding=utf-8
+set ambiwidth=double
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set timeout timeoutlen=300 ttimeoutlen=100
+set backspace=indent,eol,start
+set ignorecase
+set smartcase
+set visualbell
+set noerrorbells
+
+" colors
+set background=dark
+" TODO: move to a list, autoload into setcolors list
+colorscheme dracula
+" colorscheme onedark
+" colorscheme ps_color
+" colorscheme ir_black
+" colorscheme pyte
+" colorscheme xoria256
+" colorscheme mayansmoke " light
+
 " TODO: this is broken now for some reason, it turns grey at column ~51
 " maybe fugitive overwrites it
 autocmd Filetype gitcommit setlocal spell textwidth=72
@@ -168,6 +167,8 @@ call arpeggio#map('i', '', 0, 'jk', '<Esc>')
 call arpeggio#map('n', '', 0, '`<Space>', ':Dispatch<Space>')
 call arpeggio#map('n', '', 0, '`1', ':Dispatch!<Space>')
 call arpeggio#map('n', '', 0, 'cl', ':ccl<CR>')
+call arpeggio#map('n', '', 0, 'wv', ':vertical resize +5<CR>')
+call arpeggio#map('n', '', 0, 'wh', ':resize +5<CR>')
 
 " ng
 call arpeggio#map('n', '', 0, 'ac', ':EComponent<CR>')
