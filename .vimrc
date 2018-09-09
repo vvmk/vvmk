@@ -43,7 +43,7 @@ set encoding=utf-8
 set ambiwidth=double
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
-set timeout timeoutlen=300 ttimeoutlen=100
+set timeout timeoutlen=400 ttimeoutlen=100
 set backspace=indent,eol,start
 set ignorecase
 set smartcase
@@ -113,8 +113,20 @@ map <leader>gcc :Gcommit<CR>
 " Trim whitespace in py files
 autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
 
+"html
+function! HTMLStart()
+    let title = input('Title? ')
+    exec 'normal i<!DOCTYPE html><html><head>'
+    if strlen(title)
+        exec 'normal o<title>' . title . '</title>' 
+    endif
+    exec 'normal o</head><body></body></html>kO'
+    return '	'
+endfunction
+iabbrev htmls <C-R>=HTMLStart()<CR>
+
 "php
-autocmd BufEnter *.blade.php execute 'set ft=html'
+autocmd BufEnter,BufRead *.blade.php set ft=html.php
 iabbrev $t $this->
 function! PHPClass()
     let name = input('Class name? ')
@@ -130,8 +142,33 @@ function! PHPClass()
     exec 'normal iclass ' . name . ' {}O'
 
     exec 'normal i	public function __construct() { }'
+    return '	'
 endfunction
-map <leader>pc :call PHPClass()<CR>
+" map <leader>pc :call PHPClass()<CR>
+iabbrev phc <C-R>=PHPClass()<CR>
+
+function! PhpTemplateShorthand()
+    let keyword = input('Keyword? ')
+    let content = input('Content? ')
+
+    exec 'normal i<?php '
+    if strlen(keyword)
+        if keyword == 'elseif'
+            exec 'normal i elseif (' . content . ') : ?>'
+            return '	'
+        endif
+        exec 'normal i ' . keyword . ' (' . content . ') : ?><?php end' . keyword . '; ?>O'
+    endif
+    return '	'
+endfunction
+iabbrev phts <C-R>=PhpTemplateShorthand()<CR>
+
+function! PhpInterpolation()
+    exec 'normal i<?= ?>T=a'
+    return ''
+endfunction
+iabbrev ph[ <C-R>=PhpInterpolation()<CR>
+
 
 " Add a new dependency to a PHP class
 function! PHPAddDependency()
