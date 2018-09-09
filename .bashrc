@@ -21,6 +21,9 @@ export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 
 # aliases
 alias ls='ls -GFh'
+alias vd='cd'
+alias v='vim'
+alias cl='clear'
 
 # fix a bug in GNU grep caused by setting GREP_OPTIONS {
 export GREP_OPTIONS="--color"

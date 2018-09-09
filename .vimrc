@@ -14,6 +14,10 @@ set autoindent
 set copyindent
 noremap <bar> :Dispatch<CR>
 noremap <leader>\ :Dispatch!<CR>
+set wildignore+=*.so,*.swp,*.zip
+set wildignore+=*/vendor/**
+set wildignore+=*/public/forum/**
+set wildignore+=*/node_modules/**
 "end experimental
 
 " general
@@ -68,6 +72,9 @@ set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 "  can cause other problems too, so I recommend turning that behavior off.
 set sessionoptions-=options
 
+"abbrev
+cabbrev fo Focus
+
 "maps
 command WQ wq
 command Wq wq
@@ -107,7 +114,8 @@ map <leader>gcc :Gcommit<CR>
 autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
 
 "php
-map <leader>pt i$this->
+autocmd BufEnter *.blade.php execute 'set ft=html'
+iabbrev $t $this->
 function! PHPClass()
     let name = input('Class name? ')
     let namespace = input('Any Namespace? ')
@@ -121,7 +129,7 @@ function! PHPClass()
     " Open class
     exec 'normal iclass ' . name . ' {}O'
 
-    exec 'normal i	public function __construct(){ }'
+    exec 'normal i	public function __construct() { }'
 endfunction
 map <leader>pc :call PHPClass()<CR>
 
@@ -145,6 +153,9 @@ nmap <leader>lr :e app/routes.php<CR>
 nmap <leader>lca :e app/config/app.php<CR>81Gf(%O
 nmap <leader>lcd :e app/config/database.php<CR>
 nmap <leader>lc :e composer.json<CR>
+cabbrev gm Dispatch php artisan generate:model
+cabbrev gc Dispatch php artisan generate:controller
+cabbrev gmig Dispatch php artisan generate:migration
 
 "go
 autocmd FileType go noremap <leader>t :GoAlternate<CR>
@@ -238,3 +249,7 @@ let g:ale_fixers = {
             \ 'markdown': ['prettier'],
             \ 'json': ['prettier'],
             \}
+
+let g:ctrlp_working_path_mode = 'r'
+
+let g:PHP_removeCRwhenUnix = 1
