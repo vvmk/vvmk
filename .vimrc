@@ -17,7 +17,7 @@ noremap <leader>\ :Dispatch!<CR>
 set wildignore+=*.so,*.swp,*.zip
 set wildignore+=*/vendor/**
 set wildignore+=*/public/forum/**
-set wildignore+=*/node_modules/**
+" set wildignore+=*/node_modules/** " breaks angular-vim
 "end experimental
 
 " general
@@ -52,14 +52,27 @@ set noerrorbells
 
 " colors
 set background=dark
-" TODO: move to a list, autoload into setcolors list
-colorscheme dracula
-" colorscheme onedark
+" colorscheme dracula
+" colorscheme badwolf
+colorscheme onedark
 " colorscheme ps_color
 " colorscheme ir_black
 " colorscheme pyte
 " colorscheme xoria256
 " colorscheme mayansmoke " light
+
+" TODO: move to a list, autoload into setcolors list
+" let g:colorList = [
+"             \'dracula',
+"             \'ps_color',
+"             \'ir_black',
+"             \'pyte',
+"             \'xoria256',
+"             \'mayansmoke',
+"             \'badwolf',
+"             \]
+" SetColors(g:colorList)
+
 
 " TODO: this is broken now for some reason, it turns grey at column ~51
 " maybe fugitive overwrites it
@@ -99,6 +112,21 @@ map <leader>e :e %%
 map <leader>es :sp %%
 map <leader>ev :vsp %%
 map <leader>et :tabe %%
+
+" experimental
+function s:MkNonExDir(file, buf)
+    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+        let dir=fnamemodify(a:file, ':h')
+        if !isdirectory(dir)
+            call mkdir(dir, 'p')
+        endif
+    endif
+endfunction
+augroup BWCCreateDir
+    autocmd!
+    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+augroup END
+" end experimental
 
 "leaders
 nmap <leader>w :w!<CR>
@@ -185,21 +213,40 @@ function! PHPAddDependency()
 endfunction
 map <leader>pd :call PHPAddDependency()<CR>
 
-"laravel
-nmap <leader>lr :e app/routes.php<CR>
+"lara.vim
+nmap <leader>lr :e routes/web.php<CR>
 nmap <leader>lca :e app/config/app.php<CR>81Gf(%O
 nmap <leader>lcd :e app/config/database.php<CR>
 nmap <leader>lc :e composer.json<CR>
-cabbrev gm Dispatch php artisan generate:model
-cabbrev gc Dispatch php artisan generate:controller
-cabbrev gmig Dispatch php artisan generate:migration
+cabbrev pam Dispatch php artisan migrate
+cabbrev pagm Dispatch php artisan generate:model
+cabbrev pagc Dispatch php artisan generate:controller
+cabbrev pagmig Dispatch php artisan generate:migration
+
+function! LaravelNewView()
+    let path = input('views/')
+    if strlen(path)
+        let npath = 'resources/views/' . path . '.blade.php' 
+        execute 'edit' npath
+    endif
+endfunction
+nmap <leader>lv :call LaravelNewView()<CR>
+
+" TODO: 
+function! BladeEndDirective(opening)
+    exec 'normal i@' . a:opening . '@end' . a:opening . 'O'
+    return ''
+endfunction
+" iabbrev foreach <C-R>=BladeEndDirective("foreach")<CR>
+" iabbrev if <C-R>=BladeEndDirective("if")<CR>
+" iabbrev while <C-R>=BladeEndDirective("while")<CR>
 
 "go
 autocmd FileType go noremap <leader>t :GoAlternate<CR>
 
 "abbrev
 iabbrev cadc complexaesthetic.com
-iabbrev @@ v@complexaesthetic.com
+" iabbrev @@ v@complexaesthetic.com
 
 "arpeggio
 " TODO: when angular-cli.vim is loaded, arpeggio#map 'n', '', 0, 'ng' '{???}')
@@ -265,6 +312,8 @@ let python_highlight_all = 1
 
 " hopefully avoid vim getting confused by vue file syntax
 autocmd FileType vue syntax sync fromstart
+
+let g:airline_theme='onedark'
 
 " stop this goofy vue plugin checking for EVERY pre-processor language
 let g:vue_disable_pre_processors=1
