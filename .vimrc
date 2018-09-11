@@ -52,9 +52,9 @@ set noerrorbells
 
 " colors
 set background=dark
-" colorscheme dracula
+colorscheme dracula
 " colorscheme badwolf
-colorscheme onedark
+" colorscheme onedark
 " colorscheme ps_color
 " colorscheme ir_black
 " colorscheme pyte
@@ -219,9 +219,9 @@ nmap <leader>lca :e app/config/app.php<CR>81Gf(%O
 nmap <leader>lcd :e app/config/database.php<CR>
 nmap <leader>lc :e composer.json<CR>
 cabbrev pam Dispatch php artisan migrate
-cabbrev pagm Dispatch php artisan generate:model
-cabbrev pagc Dispatch php artisan generate:controller
-cabbrev pagmig Dispatch php artisan generate:migration
+cabbrev pamm Dispatch php artisan make:model
+cabbrev pamc Dispatch php artisan make:controller
+cabbrev pammig Dispatch php artisan make:migration
 
 function! LaravelNewView()
     let path = input('views/')
