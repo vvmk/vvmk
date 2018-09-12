@@ -106,7 +106,7 @@ noremap <C-K> <C-W>k<C-W><CR>
 map <leader>o :only<CR>
 
 " files
-cmap cwd lcd %:p:h cmap cd. lcd %:p:h " } ExRemappings {
+cmap cwd lcd %:p:h cmap cd. lcd %:p:h
 cmap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 map <leader>e :e %%
 map <leader>es :sp %%
