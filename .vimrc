@@ -136,6 +136,7 @@ map <leader>q1 :q!<CR>
 map <leader>gs :Gstatus<CR>
 map <leader>gw :Gwrite<CR>
 map <leader>gcc :Gcommit<CR>
+map <leader>gaa :Dispatch git add .<CR>
 
 "python
 " Trim whitespace in py files
