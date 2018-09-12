@@ -18,6 +18,12 @@ set wildignore+=*.so,*.swp,*.zip
 set wildignore+=*/vendor/**
 set wildignore+=*/public/forum/**
 " set wildignore+=*/node_modules/** " breaks angular-vim
+
+func Eatchar(pat)
+    let c = nr2char(getchar(0))
+    return (c =~ a:pat) ? '' : c
+endfunc
+iabbr <silent> if if ()<Left><C-R>=Eatchar('\s')<CR>
 "end experimental
 
 " general
@@ -213,6 +219,16 @@ function! PHPAddDependency()
     exec 'normal :%s/(, /(/g'
 endfunction
 map <leader>pd :call PHPAddDependency()<CR>
+
+" public function <cursor>() {}
+function! PHPPublicFunction(modifier)
+    " echom 'public func abbrev works: ' . a:modifier
+    execute 'normal i' . a:modifier . ' function () {}kk0f(i'
+    return ''
+endfunction
+autocmd FileType php iabbrev met <C-R>=PHPPublicFunction('public')<CR>
+autocmd FileType php iabbrev metp <C-R>=PHPPublicFunction('private')<CR>
+autocmd FileType php iabbrev metpro <C-R>=PHPPublicFunction('protected')<CR>
 
 "lara.vim
 nmap <leader>lr :e routes/web.php<CR>
