@@ -23,7 +23,6 @@ func Eatchar(pat)
     let c = nr2char(getchar(0))
     return (c =~ a:pat) ? '' : c
 endfunc
-iabbr <silent> if if ()<Left><C-R>=Eatchar('\s')<CR>
 "end experimental
 
 " general
@@ -225,6 +224,7 @@ function! PHPPublicFunction(modifier)
     execute 'normal i' . a:modifier . ' function () {}k0f(a'
     return ''
 endfunction
+autocmd FileType php iabbrev <silent> if if ()<Left><C-R>=Eatchar('\s')<CR>
 autocmd FileType php iabbrev <silent> met <C-R>=PHPPublicFunction('public')<CR><C-R>=Eatchar('\s')<CR>
 autocmd FileType php iabbrev <silent> metp <C-R>=PHPPublicFunction('private')<CR><C-R>=Eatchar('\s')<CR>
 autocmd FileType php iabbrev <silent> metpro <C-R>=PHPPublicFunction('protected')<CR><C-R>=Eatchar('\s')<CR>
