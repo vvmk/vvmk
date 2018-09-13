@@ -158,11 +158,11 @@ function! HTMLStart()
     exec 'normal o</head><body></body></html>kO'
     return '	'
 endfunction
-iabbrev htmls <C-R>=HTMLStart()<CR>
+iabbrev htmls <C-R>=HTMLStart()<CR><C-R>=Eatchar('\s')<CR>
 
 "php
 autocmd BufEnter,BufRead *.blade.php set ft=html.php
-iabbrev $t $this->
+iabbrev $t $this-><C-R>=Eatchar('\s')<CR>
 function! PHPClass()
     let name = input('Class name? ')
     let namespace = input('Any Namespace? ')
@@ -222,13 +222,12 @@ map <leader>pd :call PHPAddDependency()<CR>
 
 " public function <cursor>() {}
 function! PHPPublicFunction(modifier)
-    " echom 'public func abbrev works: ' . a:modifier
-    execute 'normal i' . a:modifier . ' function () {}kk0f(i'
+    execute 'normal i' . a:modifier . ' function () {}k0f(a'
     return ''
 endfunction
-autocmd FileType php iabbrev met <C-R>=PHPPublicFunction('public')<CR>
-autocmd FileType php iabbrev metp <C-R>=PHPPublicFunction('private')<CR>
-autocmd FileType php iabbrev metpro <C-R>=PHPPublicFunction('protected')<CR>
+autocmd FileType php iabbrev <silent> met <C-R>=PHPPublicFunction('public')<CR><C-R>=Eatchar('\s')<CR>
+autocmd FileType php iabbrev <silent> metp <C-R>=PHPPublicFunction('private')<CR><C-R>=Eatchar('\s')<CR>
+autocmd FileType php iabbrev <silent> metpro <C-R>=PHPPublicFunction('protected')<CR><C-R>=Eatchar('\s')<CR>
 
 "lara.vim
 nmap <leader>lr :e routes/web.php<CR>
