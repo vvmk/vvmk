@@ -236,6 +236,7 @@ nmap <leader>lr :e routes/web.php<CR>
 nmap <leader>lca :e app/config/app.php<CR>81Gf(%O
 nmap <leader>lcd :e app/config/database.php<CR>
 nmap <leader>lc :e composer.json<CR>
+cabbrev pa Dispatch php artisan
 cabbrev pam Dispatch php artisan migrate
 cabbrev pamm Dispatch php artisan make:model
 cabbrev pamc Dispatch php artisan make:controller
