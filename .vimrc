@@ -18,12 +18,12 @@ set wildignore+=*.so,*.swp,*.zip
 set wildignore+=*/vendor/**
 set wildignore+=*/public/forum/**
 " set wildignore+=*/node_modules/** " breaks angular-vim
+"end experimental
 
 func Eatchar(pat)
     let c = nr2char(getchar(0))
     return (c =~ a:pat) ? '' : c
 endfunc
-"end experimental
 
 " general
 filetype plugin indent on
@@ -100,7 +100,8 @@ command W w
 command Q q
 
 nnoremap == gg=G``zz
-imap <C-U> <Esc>gUiwea 
+" iunmap <C-U>
+inoremap <C-U> <Esc>gUiwea
 
 " splits
 noremap <C-J> <C-W>j<C-W><CR>
@@ -137,6 +138,7 @@ augroup END
 nmap <leader>w :w!<CR>
 map <leader>q :wq<CR>
 map <leader>q1 :q!<CR>
+map <leader>sv :source ~/.vimrc<CR>
 "fugitive
 map <leader>gs :Gstatus<CR>
 map <leader>gw :Gwrite<CR>
@@ -274,12 +276,23 @@ iabbrev cadc complexaesthetic.com
 "   'ng' vc  calls :VComponent
 "   'ng' ss  calls :SService
 
+" experimental 
+function RunTestsForProject()
+    let ft = &filetype
+    if (ft == 'php')
+        execute 'normal:Dispatch phpunit'
+    endif
+    return ''
+endfunction
+" end experimental
+
 call arpeggio#map('i', '', 0, 'jk', '<Esc>')
 call arpeggio#map('n', '', 0, '`<Space>', ':Dispatch<Space>')
 call arpeggio#map('n', '', 0, '`1', ':Dispatch!<Space>')
 call arpeggio#map('n', '', 0, 'cl', ':ccl<CR>')
 call arpeggio#map('n', '', 0, 'wv', ':vertical resize +5<CR>')
 call arpeggio#map('n', '', 0, 'wh', ':resize +5<CR>')
+call arpeggio#map('n', '', 0, 'rt', ':call RunTestsForProject()<CR>')
 
 " ng
 call arpeggio#map('n', '', 0, 'ac', ':EComponent<CR>')
