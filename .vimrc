@@ -152,14 +152,15 @@ autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
 "html
 function! HTMLStart()
     let title = input('Title? ')
-    exec 'normal i<!DOCTYPE html><html><head>'
+    execute 'normal i<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">'
     if strlen(title)
-        exec 'normal o<title>' . title . '</title>' 
+        execute 'normal o<title>' . title . '</title>' 
     endif
-    exec 'normal o</head><body></body></html>kO'
+    execute 'normal o</head><body></body></html>kO'
     return '	'
 endfunction
-iabbrev htmls <C-R>=HTMLStart()<CR><C-R>=Eatchar('\s')<CR>
+autocmd FileType html iabbrev htmls <C-R>=HTMLStart()<CR><C-R>=Eatchar('\s')<CR>
+autocmd FileType html iabbrev {{ {{ }}<Left><Left><Left>
 
 "php
 autocmd BufEnter,BufRead *.blade.php set ft=html.php
@@ -242,14 +243,21 @@ cabbrev pamm Dispatch php artisan make:model
 cabbrev pamc Dispatch php artisan make:controller
 cabbrev pammig Dispatch php artisan make:migration
 
-function! LaravelNewView()
+function! LaravimNewView()
     let path = input('views/')
     if strlen(path)
         let npath = 'resources/views/' . path . '.blade.php' 
         execute 'edit' npath
     endif
 endfunction
-nmap <leader>lv :call LaravelNewView()<CR>
+nmap <leader>lv :call LaravimNewView()<CR>
+
+function! LaravimUseUnderCursor()
+    let cw = expand("<cword>")
+    let pre = input("use ")
+    execute "normal gg/classkOuse " . pre . '\' . cw . ";2\<c-o>"
+endfunction
+autocmd FileType php noremap <leader>i :call LaravimUseUnderCursor()<CR>
 
 " TODO: 
 function! BladeEndDirective(opening)
