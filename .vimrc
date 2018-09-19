@@ -119,7 +119,6 @@ map <leader>es :sp %%
 map <leader>ev :vsp %%
 map <leader>et :tabe %%
 
-" experimental
 function s:MkNonExDir(file, buf)
     if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
         let dir=fnamemodify(a:file, ':h')
@@ -132,6 +131,15 @@ augroup BWCCreateDir
     autocmd!
     autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
+
+" experimental
+function! SubUnderCursor()
+    let cw = expand("<cword>")
+    let rep = input("Replace with: ")
+    
+    execute 'normal :%s/' . cw . '/' . rep . '/g'
+endfunction
+map <leader>ss :call SubUnderCursor()<CR>
 " end experimental
 
 "leaders
@@ -161,6 +169,14 @@ function! HTMLStart()
 endfunction
 autocmd FileType html iabbrev htmls <C-R>=HTMLStart()<CR><C-R>=Eatchar('\s')<CR>
 autocmd FileType html iabbrev {{ {{ }}<Left><Left><Left>
+
+"Vue
+function! VueEmptyComponent()
+    let componentName = input('Name? ')
+    execute "normal iVue.component('" . componentName . "', {});kko"
+    return '	'
+endfunction
+iabbrev vc <C-R>=VueEmptyComponent()<CR><C-R>=Eatchar('\s')<CR>
 
 "php
 autocmd BufEnter,BufRead *.blade.php set ft=html.php
