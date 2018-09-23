@@ -17,7 +17,6 @@ noremap <leader>\ :Dispatch!<CR>
 set wildignore+=*.so,*.swp,*.zip
 set wildignore+=*/vendor/**
 set wildignore+=*/public/forum/**
-" set wildignore+=*/node_modules/** " breaks angular-vim
 "end experimental
 
 func Eatchar(pat)
@@ -168,7 +167,7 @@ function! HTMLStart()
     return '	'
 endfunction
 autocmd FileType html iabbrev htmls <C-R>=HTMLStart()<CR><C-R>=Eatchar('\s')<CR>
-autocmd FileType html iabbrev {{ {{ }}<Left><Left><Left>
+" autocmd FileType html iabbrev {{ {{ }}<Left><Left><Left>
 
 "Vue
 function! VueEmptyComponent()
@@ -350,6 +349,7 @@ let g:user_emmet_leader_key = '<C-e>'
 let g:gnu_grep = 'ggrep'
 
 autocmd VimEnter * if globpath('.,..','node_modules/@angular') != '' | call angular_cli#init() | endif
+autocmd VimEnter * set wildignore+=*/node_modules/** " breaks angular-vim
 
 " keep an empty space after the following commands, save many keystrokes
 " TODO: conditionally load only when angular_cli.vim is loaded
@@ -390,6 +390,7 @@ let g:ale_fixers = {
             \ 'markdown': ['prettier'],
             \ 'json': ['prettier'],
             \}
+let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es6'
 
 let g:ctrlp_working_path_mode = 'r'
 

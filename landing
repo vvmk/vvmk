@@ -11,6 +11,7 @@ mkdir ~/.vim/colors
 mkdir ~/.vim/autoload
 mkdir -p ~/.git_template/hooks
 echo "🙉 Clone vim plugins..."
+git clone https://github.com/vvmk/AutoClose.git ~/.vim/bundle/AutoClose
 git clone https://github.com/vvmk/angular-cli.vim.git ~/.vim/bundle/angular-cli.vim
 git clone https://github.com/bdauria/angular-cli.vim.git ~/.vim/bundle/angular-cli.vim
 git clone https://github.com/kien/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim
