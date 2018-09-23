@@ -131,7 +131,6 @@ augroup BWCCreateDir
     autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
 
-" experimental
 function! SubUnderCursor()
     let cw = expand("<cword>")
     let rep = input("Replace with: ")
@@ -139,7 +138,6 @@ function! SubUnderCursor()
     execute 'normal :%s/' . cw . '/' . rep . '/g'
 endfunction
 map <leader>ss :call SubUnderCursor()<CR>
-" end experimental
 
 "leaders
 nmap <leader>w :w!<CR>
@@ -167,7 +165,6 @@ function! HTMLStart()
     return '	'
 endfunction
 autocmd FileType html iabbrev htmls <C-R>=HTMLStart()<CR><C-R>=Eatchar('\s')<CR>
-" autocmd FileType html iabbrev {{ {{ }}<Left><Left><Left>
 
 "Vue
 function! VueEmptyComponent()
@@ -237,12 +234,11 @@ function! PHPAddDependency()
 endfunction
 map <leader>pd :call PHPAddDependency()<CR>
 
-" public function <cursor>() {}
+" <modifier> function <cursor>() {}
 function! PHPPublicFunction(modifier)
     execute 'normal i' . a:modifier . ' function () {}k0f(a'
     return ''
 endfunction
-autocmd FileType php iabbrev <silent> if if ()<Left><C-R>=Eatchar('\s')<CR>
 autocmd FileType php iabbrev <silent> met <C-R>=PHPPublicFunction('public')<CR><C-R>=Eatchar('\s')<CR>
 autocmd FileType php iabbrev <silent> metp <C-R>=PHPPublicFunction('private')<CR><C-R>=Eatchar('\s')<CR>
 autocmd FileType php iabbrev <silent> metpro <C-R>=PHPPublicFunction('protected')<CR><C-R>=Eatchar('\s')<CR>
@@ -288,7 +284,6 @@ autocmd FileType go noremap <leader>t :GoAlternate<CR>
 
 "abbrev
 iabbrev cadc complexaesthetic.com
-" iabbrev @@ v@complexaesthetic.com
 
 "arpeggio
 " TODO: when angular-cli.vim is loaded, arpeggio#map 'n', '', 0, 'ng' '{???}')
@@ -323,8 +318,6 @@ call arpeggio#map('n', '', 0, 'rt', ':call RunTestsForProject()<CR>')
 call arpeggio#map('n', '', 0, 'ac', ':EComponent<CR>')
 call arpeggio#map('n', '', 0, 'at', ':ETemplate<CR>')
 call arpeggio#map('n', '', 0, 'as', ':EStylesheet<CR>')
-" call arpeggio#map('n', '', 0, 'vi-', ':Vexplore! %%<CR>')
-" call arpeggio#map('n', '', 0, 'h-', ':Hexplore %%<CR>')
 
 "globals
 let g:netrw_banner = 0
@@ -390,7 +383,7 @@ let g:ale_fixers = {
             \ 'markdown': ['prettier'],
             \ 'json': ['prettier'],
             \}
-let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es6'
+" let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es6'
 
 let g:ctrlp_working_path_mode = 'r'
 
