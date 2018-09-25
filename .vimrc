@@ -47,7 +47,7 @@ set encoding=utf-8
 set ambiwidth=double
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
-set timeout timeoutlen=400 ttimeoutlen=100
+set timeout timeoutlen=300 ttimeoutlen=100
 set backspace=indent,eol,start
 set ignorecase
 set smartcase
@@ -92,15 +92,15 @@ set sessionoptions-=options
 "abbrev
 cabbrev fo Focus
 
-"maps
+"misc maps
 command WQ wq
 command Wq wq
 command W w
 command Q q
-
 nnoremap == gg=G``zz
 " iunmap <C-U>
 inoremap <C-U> <Esc>gUiwea
+inoremap <C-L> <C-O>a
 
 " splits
 noremap <C-J> <C-W>j<C-W><CR>
