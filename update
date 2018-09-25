@@ -24,11 +24,11 @@ echo "🙈  Make dirs..."
 mkdir ~/.vim
 mkdir ~/.vim/swap
 mkdir ~/.vim/backup
-mkdir ~/.vim/bundle
 mkdir ~/.vim/colors
-mkdir ~/.vim/autoload
 mkdir -p ~/.git_template/hooks
-echo "🙉 Clone vim plugins..."' >~/.vim/landing
+echo "🙉 Clone vim plugins..."
+mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim' >~/.vim/landing
 
 # the revised first half 
 find ~/.vim/bundle/*/.git/config | xargs -n 1 ggrep -Po 'url = \K.*.git' | xargs -n 1 -I {} bash -c 'echo git clone {}' >~/.vim/vvtemppart1
@@ -63,7 +63,7 @@ git add .vimrc .cvsignore .gitconfig .bash_profile \
 git commit -m "${1:-$default}"
 git push origin master
 
-# back to where we started
+back to where we started
 cd $CWD
 
 echo '🐒 Done! '
