@@ -21,6 +21,11 @@ esac
 
 if [ "$machine" = "Darwin" ]; then
     eval $(/usr/libexec/path_helper -s)
+
+    # fix a bug in GNU grep caused by setting GREP_OPTIONS
+    export GREP_OPTIONS="--color"
+    alias grep="/usr/bin/grep $GREP_OPTIONS"
+    unset GREP_OPTIONS
 fi
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
@@ -40,12 +45,6 @@ alias cl='clear'
 
 alias w~='cd /c/Users/vmasiello'
 export PGHW='/c/src/pgh-student/PGHGlobal.Web'
-
-# fix a bug in GNU grep caused by setting GREP_OPTIONS {
-export GREP_OPTIONS="--color"
-alias grep="/usr/bin/grep $GREP_OPTIONS"
-unset GREP_OPTIONS
-# }
 
 mkcd() {
     case "$1" in
