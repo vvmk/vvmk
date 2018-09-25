@@ -6,13 +6,23 @@ export PATH="$HOME/.composer/vendor/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/bin:$PATH"
 
-EDITOR=vim; export EDITOR
-
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-# TODO: Mac only
-# eval $(/usr/libexec/path_helper -s)
+EDITOR=vim; export EDITOR
+
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    Linux*) machine=Linus;;
+    Darwin*) machine=Mac;;
+    CYGWIN*) machine=Cygwin;;
+    MINGW*) machine=MinGw;;
+    *) machine="UNKNOWN:${unameOut}"
+esac
+
+if [ "$machine" = "Darwin" ]; then
+    eval $(/usr/libexec/path_helper -s)
+fi
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
@@ -28,8 +38,8 @@ alias ls='ls -GFh'
 alias vd='cd'
 alias v='vim'
 alias cl='clear'
-alias w~='cd /c/Users/vmasiello'
 
+alias w~='cd /c/Users/vmasiello'
 export PGHW='/c/src/pgh-student/PGHGlobal.Web'
 
 # fix a bug in GNU grep caused by setting GREP_OPTIONS {
