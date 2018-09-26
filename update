@@ -59,7 +59,7 @@ echo 🙊 Git...
 
 default='auto-update'
 git add .vimrc .cvsignore .gitconfig .bash_profile \
-    .bashrc landing .profile .tmux.conf autoload ./.git_template
+    .bashrc landing .profile .tmux.conf ./.git_template
 git commit -m "${1:-$default}"
 git push origin master
 
