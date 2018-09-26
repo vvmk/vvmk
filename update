@@ -63,7 +63,7 @@ git add .vimrc .cvsignore .gitconfig .bash_profile \
 git commit -m "${1:-$default}"
 git push origin master
 
-back to where we started
+#back to where we started
 cd $CWD
 
 echo '🐒 Done! '
