@@ -383,7 +383,6 @@ let g:ale_fixers = {
             \ 'markdown': ['prettier'],
             \ 'json': ['prettier'],
             \}
-" let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es6'
 
 let g:ctrlp_working_path_mode = 'r'
 
