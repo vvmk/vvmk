@@ -10,6 +10,11 @@ export PATH="/usr/local/sbin:$PATH"
 
 EDITOR=vim; export EDITOR
 
+# WSL refuses to set umask properly.
+if [ "$(umask)" = "0000" ]; then
+    umask 022
+fi
+
 unameOut="$(uname -s)"
 case "${unameOut}" in
     Linux*) machine=Linus;;
