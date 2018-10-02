@@ -48,6 +48,10 @@ alias vd='cd'
 alias v='vim'
 alias cl='clear'
 
+if ! [ -x "$(command -v lolcat)" ]; then
+    alias cat='lolcat'
+fi
+
 alias w~='cd /c/Users/vmasiello'
 export PGHW='/c/src/pgh-student/PGHGlobal.Web'
 
