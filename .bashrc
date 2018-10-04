@@ -12,7 +12,7 @@ EDITOR=vim; export EDITOR
 
 # WSL refuses to set umask properly.
 if [ "$(umask)" = "0000" ]; then
-    umask 022
+    umask 002
 fi
 
 unameOut="$(uname -s)"
@@ -31,6 +31,8 @@ if [ "$machine" = "Darwin" ]; then
     export GREP_OPTIONS="--color"
     alias grep="/usr/bin/grep $GREP_OPTIONS"
     unset GREP_OPTIONS
+
+    alias ls='ls -GFh'
 fi
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
@@ -43,12 +45,12 @@ export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 # }
 
 # aliases
-alias ls='ls -GFh'
+alias ls='ls -Fh --color'
 alias vd='cd'
 alias v='vim'
 alias cl='clear'
 
-if ! [ -x "$(command -v lolcat)" ]; then
+if [ -x "$(command -v lolcat)" ]; then
     alias cat='lolcat'
 fi
 
