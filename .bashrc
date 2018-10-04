@@ -83,8 +83,8 @@ usejava() {
     export JAVA_HOME=`/usr/libexec/java_home -v $1`
     java -version
 }
-dockerbash() {
-    docker exec -it "$1" bash
+dockersh() {
+    docker container exec -it "$1" sh
 }
 
 # added by travis gem
