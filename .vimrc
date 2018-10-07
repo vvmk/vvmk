@@ -77,16 +77,13 @@ colorscheme dracula
 "             \]
 " SetColors(g:colorList)
 
-
-" TODO: this is broken now for some reason, it turns grey at column ~51
-" maybe fugitive overwrites it
+" Fugitive sets this to 50 for the short message. 72 is fine for the body
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
 set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 
-"  Tim Pope says: sessions default to capturing all global options, 
-"  which includes the 'runtimepath' that pathogen.vim manipulates.  This 
-"  can cause other problems too, so I recommend turning that behavior off.
+"  sessions default to capturing all global options including runtimepath. not
+"  good with Pathogen.
 set sessionoptions-=options
 
 "abbrev
@@ -164,7 +161,7 @@ function! HTMLStart()
     execute 'normal o</head><body></body></html>kO'
     return '	'
 endfunction
-autocmd FileType html iabbrev htmls <C-R>=HTMLStart()<CR><C-R>=Eatchar('\s')<CR>
+autocmd FileType html iabbrev htmls <C-R>=HTMLStart()<CR><C-R>=Eatchar('\t')<CR>
 
 "Vue
 function! VueEmptyComponent()
@@ -172,11 +169,11 @@ function! VueEmptyComponent()
     execute "normal iVue.component('" . componentName . "', {});kko"
     return '	'
 endfunction
-iabbrev vc <C-R>=VueEmptyComponent()<CR><C-R>=Eatchar('\s')<CR>
+iabbrev vc <C-R>=VueEmptyComponent()<CR><C-R>=Eatchar('\t')<CR>
 
 "php
 autocmd BufEnter,BufRead *.blade.php set ft=html.php
-iabbrev $t $this-><C-R>=Eatchar('\s')<CR>
+iabbrev $t $this-><C-R>=Eatchar('\t')<CR>
 function! PHPClass()
     let name = input('Class name? ')
     let namespace = input('Any Namespace? ')
@@ -282,6 +279,14 @@ endfunction
 "go
 autocmd FileType go noremap <leader>t :GoAlternate<CR>
 
+function! GoIfErrNotNil()
+    exec "AutoCloseOff"
+    exec "normal iif err != nil {\<CR>}\<Esc>O"
+    exec "AutoCloseOn"
+    return ""
+endfunction
+autocmd FileType go iabbrev <silent> iferrnn <C-R>=GoIfErrNotNil()<CR>
+
 "abbrev
 iabbrev cadc complexaesthetic.com
 
@@ -334,7 +339,7 @@ let g:go_highlight_types = 1
 
 let g:angular_cli_use_dispatch = 1
 
-let g:user_emmet_leader_key = '<C-e>'
+let g:user_emmet_leader_key = '<C-y>'
 
 " Many plugins assume all greps are the same. I keep this here as a
 " quick/temporary solution if I don't have time/it isn't worth it to 

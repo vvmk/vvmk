@@ -25,6 +25,7 @@
 	pom = push origin master
 	pod = push origin dev
 	ca = commit -a
+	fa = fetch --all
 	aliases = config --get-regexp ^alias\\.
 [init]
 	templatedir = ~/.git_template
