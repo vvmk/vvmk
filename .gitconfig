@@ -3,16 +3,10 @@
 	email = vincentmasiello@gmail.com
 [push]
 	default = matching
-[credential]
-	helper = osxkeychain
 [core]
 	excludesfile = ~/.cvsignore
 	editor = vim
-	autocrlf = input
-[http "https://git.demo.localflynn.com"]
-	sslCAInfo = /Users/V/.flynn/ca-certs/default.pem
-[credential "https://git.demo.localflynn.com"]
-	helper = /usr/local/bin/flynn git-credentials
+	autocrlf = true
 [color]
 	ui = true
 [alias]
