@@ -94,6 +94,10 @@ dockersh() {
 gosrc() {
     cd "$GOPATH/src/github.com/vvmk/$1"
 }
+addkey() {
+    eval $(ssh-agent -s)
+    ssh-add "$1"
+}
 
 # added by travis gem
 [ -f /Users/V/.travis/travis.sh ] && source /Users/V/.travis/travis.sh
