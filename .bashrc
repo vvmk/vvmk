@@ -17,7 +17,7 @@ fi
 
 unameOut="$(uname -s)"
 case "${unameOut}" in
-    Linux*) machine=Linus;;
+    Linux*) machine=Linux;;
     Darwin*) machine=Mac;;
     CYGWIN*) machine=Cygwin;;
     MINGW*) machine=MinGw;;
@@ -35,6 +35,10 @@ if [ "$machine" = "Darwin" ]; then
     alias ls='ls -GFh'
 fi
 
+if [ "$machine" = "Linux" ]; then
+    alias ls='ls -Fh --color'
+fi
+
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
@@ -45,7 +49,6 @@ export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 # }
 
 # aliases
-alias ls='ls -Fh --color'
 alias vd='cd'
 alias v='vim'
 alias cl='clear'
@@ -87,6 +90,9 @@ usejava() {
 }
 dockersh() {
     docker container exec -it "$1" sh
+}
+gosrc() {
+    cd "$GOPATH/src/github.com/vvmk/$1"
 }
 
 # added by travis gem
