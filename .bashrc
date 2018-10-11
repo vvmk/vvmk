@@ -4,6 +4,7 @@ export PATH=$PATH:$GOPATH/bin:/Users/V/code/exercism/go
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
+export PATH="~/bin:$PATH"
 
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
@@ -48,10 +49,11 @@ export CLICOLOR=1
 export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 # }
 
-# aliases
+# aliases - all
 alias vd='cd'
 alias v='vim'
 alias cl='clear'
+alias gl='git lol'
 
 if [ -x "$(command -v lolcat)" ]; then
     alias cat='lolcat'
@@ -97,6 +99,12 @@ gosrc() {
 addkey() {
     eval $(ssh-agent -s)
     ssh-add "$1"
+}
+# TODO: only works for origin/branch, add support for different remotes
+chremote() {
+    remote='origin'
+    git checkout -b "$1"
+    git pull "$remote" "$1"
 }
 
 # added by travis gem
