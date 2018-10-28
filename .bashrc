@@ -50,7 +50,7 @@ export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 # }
 
 # aliases - all
-alias vd='cd'
+alias vd='echo'
 alias v='vim'
 alias g='git'
 alias cl='clear'

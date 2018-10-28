@@ -232,13 +232,15 @@ endfunction
 map <leader>pd :call PHPAddDependency()<CR>
 
 " <modifier> function <cursor>() {}
-function! PHPPublicFunction(modifier)
+function! PHPFunctionStub(modifier)
+    execute "AutoCloseOff"
     execute 'normal i' . a:modifier . ' function () {}k0f(a'
+    execute "AutoCloseOn"
     return ''
 endfunction
-autocmd FileType php iabbrev <silent> met <C-R>=PHPPublicFunction('public')<CR><C-R>=Eatchar('\s')<CR>
-autocmd FileType php iabbrev <silent> metp <C-R>=PHPPublicFunction('private')<CR><C-R>=Eatchar('\s')<CR>
-autocmd FileType php iabbrev <silent> metpro <C-R>=PHPPublicFunction('protected')<CR><C-R>=Eatchar('\s')<CR>
+autocmd FileType php iabbrev <silent> met <C-R>=PHPFunctionStub('public')<CR><C-R>=Eatchar('\s')<CR>
+autocmd FileType php iabbrev <silent> metp <C-R>=PHPFunctionStub('private')<CR><C-R>=Eatchar('\s')<CR>
+autocmd FileType php iabbrev <silent> metpro <C-R>=PHPFunctionStub('protected')<CR><C-R>=Eatchar('\s')<CR>
 
 "lara.vim
 nmap <leader>lr :e routes/web.php<CR>
@@ -285,7 +287,7 @@ function! GoIfErrNotNil()
     exec "AutoCloseOn"
     return ""
 endfunction
-autocmd FileType go iabbrev <silent> iferrnn <C-R>=GoIfErrNotNil()<CR>
+autocmd FileType go iabbrev <silent> ifern <C-R>=GoIfErrNotNil()<CR>
 
 "abbrev
 iabbrev cadc complexaesthetic.com
@@ -318,6 +320,7 @@ call arpeggio#map('n', '', 0, 'qf', ':copen<CR>')
 call arpeggio#map('n', '', 0, 'wv', ':vertical resize +5<CR>')
 call arpeggio#map('n', '', 0, 'wh', ':resize +5<CR>')
 call arpeggio#map('n', '', 0, 'rt', ':call RunTestsForProject()<CR>')
+autocmd FileType go call arpeggio#map('n', '', 0, 'kb', ':GoDocBrowser<CR>')
 
 " ng
 call arpeggio#map('n', '', 0, 'ac', ':EComponent<CR>')

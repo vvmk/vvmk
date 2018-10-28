@@ -41,6 +41,7 @@ git clone https://github.com/tpope/vim-scriptease.git ~/.vim/bundle/vim-scriptea
 git clone https://github.com/tpope/vim-sensible.git ~/.vim/bundle/vim-sensible
 git clone https://github.com/tpope/vim-sleuth.git ~/.vim/bundle/vim-sleuth
 git clone https://github.com/tpope/vim-surround.git ~/.vim/bundle/vim-surround
+git clone https://github.com/tmux-plugins/vim-tmux.git ~/.vim/bundle/vim-tmux
 git clone https://github.com/tpope/vim-unimpaired.git ~/.vim/bundle/vim-unimpaired
 git clone https://github.com/tpope/vim-vinegar.git ~/.vim/bundle/vim-vinegar
 git clone https://github.com/vvmk/vim-vionic.git ~/.vim/bundle/vim-vionic
