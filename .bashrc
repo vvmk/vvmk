@@ -55,6 +55,7 @@ alias v='vim'
 alias g='git'
 alias cl='clear'
 alias gl='git lol'
+alias art='php artisan'
 
 if [ -x "$(command -v lolcat)" ]; then
     alias cat='lolcat'
