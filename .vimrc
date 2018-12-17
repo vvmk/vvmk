@@ -17,6 +17,7 @@ noremap <leader>\ :Dispatch!<CR>
 set wildignore+=*.so,*.swp,*.zip
 set wildignore+=*/vendor/**
 set wildignore+=*/public/forum/**
+set wildignore+=*/wwwroot/**
 "end experimental
 
 func Eatchar(pat)
@@ -145,6 +146,7 @@ map <leader>sv :source ~/.vimrc<CR>
 map <leader>gs :Gstatus<CR>
 map <leader>gw :Gwrite<CR>
 map <leader>gc :Gcommit<CR>
+map <leader>gd :Gdiff<CR>
 map <leader>g. :Dispatch git add .<CR>
 
 "python
@@ -162,6 +164,10 @@ function! HTMLStart()
     return '	'
 endfunction
 autocmd FileType html iabbrev htmls <C-R>=HTMLStart()<CR><C-R>=Eatchar('\t')<CR>
+
+"JavaScript
+" let working = <some boolean expression>
+"console.log('Dear future vince, \n\n\tViewBag.SelectStyles is', working ? 'working!' : 'not working yet.', '\n\nLove,\npast vince.');
 
 "Vue
 function! VueEmptyComponent()
@@ -238,9 +244,9 @@ function! PHPFunctionStub(modifier)
     execute "AutoCloseOn"
     return ''
 endfunction
-autocmd FileType php iabbrev <silent> met <C-R>=PHPFunctionStub('public')<CR><C-R>=Eatchar('\s')<CR>
-autocmd FileType php iabbrev <silent> metp <C-R>=PHPFunctionStub('private')<CR><C-R>=Eatchar('\s')<CR>
-autocmd FileType php iabbrev <silent> metpro <C-R>=PHPFunctionStub('protected')<CR><C-R>=Eatchar('\s')<CR>
+autocmd FileType php iabbrev <silent> met <C-R>=PHPPublicFunction('public')<CR><C-R>=Eatchar('\s')<CR>
+autocmd FileType php iabbrev <silent> metp <C-R>=PHPPublicFunction('private')<CR><C-R>=Eatchar('\s')<CR>
+autocmd FileType php iabbrev <silent> metpro <C-R>=PHPPublicFunction('protected')<CR><C-R>=Eatchar('\s')<CR>
 
 "lara.vim
 nmap <leader>lr :e routes/web.php<CR>
@@ -310,8 +316,10 @@ function RunTestsForProject()
     endif
     return ''
 endfunction
+
 " end experimental
 
+call arpeggio#map('i', '', 0, 'wjk', '<Esc>:write<CR>') " escape insert mode and write
 call arpeggio#map('i', '', 0, 'jk', '<Esc>')
 call arpeggio#map('n', '', 0, '`<Space>', ':Dispatch<Space>')
 call arpeggio#map('n', '', 0, '`1', ':Dispatch!<Space>')
@@ -323,9 +331,9 @@ call arpeggio#map('n', '', 0, 'rt', ':call RunTestsForProject()<CR>')
 autocmd FileType go call arpeggio#map('n', '', 0, 'kb', ':GoDocBrowser<CR>')
 
 " ng
-call arpeggio#map('n', '', 0, 'ac', ':EComponent<CR>')
-call arpeggio#map('n', '', 0, 'at', ':ETemplate<CR>')
-call arpeggio#map('n', '', 0, 'as', ':EStylesheet<CR>')
+autocmd FileType typescript Arpeggio noremap ac :EComponent<CR>
+autocmd FileType typescript Arpeggio noremap at :ETemplate<CR>
+autocmd FileType typescript Arpeggio noremap as :EStylesheet<CR>
 
 "globals
 let g:netrw_banner = 0
@@ -376,12 +384,14 @@ let g:vue_disable_pre_processors=1
 
 let g:ale_sign_error = '🙊'
 let g:ale_sign_warning = '🙈'
+" let g:ale_sign_error = '失'
+" let g:ale_sign_warning = '失'
 let g:ale_set_highlights = 0
 let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_text_changed = 0
 let g:ale_sign_column_always = 0
 
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 let g:ale_fixers = {
             \ 'javascript': ['eslint'],
             \ 'typescript': ['tslint'],
@@ -390,6 +400,7 @@ let g:ale_fixers = {
             \ 'vue': ['prettier'],
             \ 'markdown': ['prettier'],
             \ 'json': ['prettier'],
+            \ 'sh': ['shfmt'],
             \}
 
 let g:ctrlp_working_path_mode = 'r'
