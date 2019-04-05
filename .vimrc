@@ -148,6 +148,8 @@ map <leader>gw :Gwrite<CR>
 map <leader>gc :Gcommit<CR>
 map <leader>gd :Gdiff<CR>
 map <leader>g. :Dispatch git add .<CR>
+"dispatch
+autocmd FileType javascript let b:dispatch = 'npm run watch'
 
 "python
 " Trim whitespace in py files
@@ -166,6 +168,7 @@ endfunction
 autocmd FileType html iabbrev htmls <C-R>=HTMLStart()<CR><C-R>=Eatchar('\t')<CR>
 
 "JavaScript
+
 " let working = <some boolean expression>
 "console.log('Dear future vince, \n\n\tViewBag.SelectStyles is', working ? 'working!' : 'not working yet.', '\n\nLove,\npast vince.');
 "Arpeggio inoremap td <Esc>O// TODO: 
@@ -184,6 +187,23 @@ function! VueEmptyComponent()
     return '	'
 endfunction
 iabbrev vc <C-R>=VueEmptyComponent()<CR><C-R>=Eatchar('\t')<CR>
+
+let g:vue_routes_path = "resources/js/routes.js"
+function! VueAddRoute()
+    let name = input('Route name? ')
+
+    let capName = tolower(name)
+    let capName = substitute(capName, '^.', '\u&', 'g')
+    execute 'edit' g:vue_routes_path
+    execute 'normal :AutoCloseOff'
+    execute 'normal! /routes: [f[%O{path: ''/'. name . ''',component: '.capName.',name: '''.name.''',},'
+    execute 'normal! :AutoCloseOn'
+    execute 'normal! gg)Oimport '.capName.' from '''';'
+    execute 'normal! ha'
+    return ''
+endfunction
+autocmd FileType vue nnoremap <leader>ar :call VueAddRoute()<CR>
+autocmd FileType javascript nnoremap <leader>ar :call VueAddRoute()<CR>
 
 "php
 autocmd BufEnter,BufRead *.blade.php set ft=html.php
@@ -321,6 +341,8 @@ function RunTestsForProject()
     let ft = &filetype
     if (ft == 'php')
         execute 'normal:Dispatch phpunit'
+    elseif (ft == 'javascript' || ft == 'vue')
+        execute 'normal:Start npm test'
     endif
     return ''
 endfunction
@@ -410,7 +432,6 @@ let g:ale_fixers = {
             \ 'markdown': ['prettier'],
             \ 'json': ['prettier'],
             \ 'sh': ['shfmt'],
-            \ 'c#': ['uncrustify'],
             \}
 
 let g:ctrlp_working_path_mode = 'r'
