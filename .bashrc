@@ -13,7 +13,7 @@ EDITOR=vim; export EDITOR
 
 # WSL refuses to set umask properly.
 if [ "$(umask)" = "0000" ]; then
-    umask 002
+    umask 022
 fi
 
 unameOut="$(uname -s)"
@@ -38,8 +38,18 @@ fi
 
 if [ "$machine" = "Linux" ]; then
     alias ls='ls -Fh --color'
+    export GITHUB_KEY_LOCATION=~/.ssh/github_vvmk_trellist
+    export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
 fi
 
+if [ "$machine" = "Cygwin" ]; then
+    export GITHUB_KEY_LOCATION=~/.ssh/github_vvmk_trellist.pub
+    export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
+    remnt() {
+        umount $1
+        mount -t drvfs C: $1 -o metadata,uid=1000,gid=1000,umask=22,case=off
+    }
+fi
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
@@ -54,7 +64,8 @@ alias vd='echo'
 alias v='vim'
 alias g='git'
 alias cl='clear'
-alias gl='git lol'
+alias gl='cl && git lol'
+alias gb='git branch'
 alias art='php artisan'
 
 if [ -x "$(command -v lolcat)" ]; then
@@ -99,14 +110,23 @@ gosrc() {
     cd "$GOPATH/src/github.com/vvmk/$1"
 }
 addkey() {
+    if [[ -z $1 ]]; then
+        arg=$GITHUB_KEY_LOCATION
+    else
+        arg=$1
+    fi
     eval $(ssh-agent -s)
-    ssh-add "$1"
+    ssh-add $arg
 }
 # TODO: only works for origin/branch, add support for different remotes
 chremote() {
     remote='origin'
     git checkout -b "$1"
     git pull "$remote" "$1"
+}
+
+porig() {
+    find . -name ".orig" -delete vs find . -name 
 }
 
 # added by travis gem
