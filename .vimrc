@@ -168,6 +168,14 @@ autocmd FileType html iabbrev htmls <C-R>=HTMLStart()<CR><C-R>=Eatchar('\t')<CR>
 "JavaScript
 " let working = <some boolean expression>
 "console.log('Dear future vince, \n\n\tViewBag.SelectStyles is', working ? 'working!' : 'not working yet.', '\n\nLove,\npast vince.');
+"Arpeggio inoremap td <Esc>O// TODO: 
+function! JavascriptConsoleLog()
+    execute "AutoCloseOff"
+    execute 'normal aconsole.log();ha'
+    execute "AutoCloseOn"
+    return ''
+endfunction
+iabbrev <silent> cl. <C-R>=JavascriptConsoleLog()<CR><C-R>=Eatchar('\t')<CR>
 
 "Vue
 function! VueEmptyComponent()
@@ -321,6 +329,7 @@ endfunction
 
 call arpeggio#map('i', '', 0, 'wjk', '<Esc>:write<CR>') " escape insert mode and write
 call arpeggio#map('i', '', 0, 'jk', '<Esc>')
+call arpeggio#map('in', '', 0, 'td', '<Esc>O// TODO: ')
 call arpeggio#map('n', '', 0, '`<Space>', ':Dispatch<Space>')
 call arpeggio#map('n', '', 0, '`1', ':Dispatch!<Space>')
 call arpeggio#map('n', '', 0, 'cl', ':ccl<CR>')
@@ -382,16 +391,16 @@ let g:airline_theme='onedark'
 " stop this goofy vue plugin checking for EVERY pre-processor language
 let g:vue_disable_pre_processors=1
 
-let g:ale_sign_error = '🙊'
-let g:ale_sign_warning = '🙈'
-" let g:ale_sign_error = '失'
-" let g:ale_sign_warning = '失'
+" let g:ale_sign_error = '🙊'
+" let g:ale_sign_warning = '🙈'
+let g:ale_sign_error = '失'
+let g:ale_sign_warning = '失'
 let g:ale_set_highlights = 0
 let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_text_changed = 0
 let g:ale_sign_column_always = 0
 
-let g:ale_fix_on_save = 0
+let g:ale_fix_on_save = 1
 let g:ale_fixers = {
             \ 'javascript': ['eslint'],
             \ 'typescript': ['tslint'],
@@ -401,6 +410,7 @@ let g:ale_fixers = {
             \ 'markdown': ['prettier'],
             \ 'json': ['prettier'],
             \ 'sh': ['shfmt'],
+            \ 'c#': ['uncrustify'],
             \}
 
 let g:ctrlp_working_path_mode = 'r'
