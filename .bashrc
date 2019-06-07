@@ -126,7 +126,29 @@ chremote() {
 }
 
 porig() {
-    find . -name ".orig" -delete vs find . -name 
+    find . -name ".orig" -delete 
+}
+
+git-big() {
+    if [[ -z $1 ]]; then
+        arg=20
+    else
+        arg1=$1
+    fi
+
+    git rev-list master | while read rev; do git ls-tree -lr $rev  | cut -c54- | sed -r 's/^ +//g;'; done  | sort -u | perl -e 'while (<>) { chomp; @stuff=split("\t");$sums{$stuff[1]} += $stuff[0];} print "$sums{$_} $_\n" for (keys %sums);' | sort -rn | head -n $arg
+}
+
+git-purge() {
+if [[ -z $1 ]]; then
+    echo "error: missing arg: path"
+    echo "Usage: git-purge <path_to_file(s)_to_purge>"
+fi
+    git filter-branch --force --index-filter "git rm --cached --ignore-unmatch $1" --prune-empty --tag-name-filter cat -- --all
+}
+
+git-all() {
+    find . -mindepth 1 -maxdepth 1 -type d -print -exec git -C {} $1 \;
 }
 
 # added by travis gem

@@ -96,7 +96,7 @@ command Wq wq
 command W w
 command Q q
 nnoremap == gg=G``zz
-nnoremap <S-H> 079lbi<CR><Esc>$
+nnoremap <S-H> 079lBi<CR><Esc>$
 " iunmap <C-U>
 inoremap <C-U> <Esc>gUiwea
 inoremap <C-L> <C-O>a
@@ -425,8 +425,8 @@ let g:ale_sign_column_always = 0
 
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
-            \ 'javascript': ['eslint'],
-            \ 'typescript': ['tslint'],
+            \ 'javascript': ['eslint', 'prettier'],
+            \ 'typescript': ['tslint', 'prettier'],
             \ 'css': ['prettier'],
             \ 'scss': ['prettier'],
             \ 'vue': ['prettier'],
@@ -438,3 +438,6 @@ let g:ale_fixers = {
 let g:ctrlp_working_path_mode = 'r'
 
 let g:PHP_removeCRwhenUnix = 1
+
+let g:surround_indent = 1
+
