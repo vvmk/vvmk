@@ -2,7 +2,6 @@
 export GOPATH=/Users/V/go
 export PATH=$PATH:$GOPATH/bin:/Users/V/code/exercism/go
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH="$HOME/.composer/vendor/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="~/bin:$PATH"
 
@@ -26,6 +25,9 @@ case "${unameOut}" in
 esac
 
 if [ "$machine" = "Darwin" ]; then
+
+    export PATH="$HOME/.composer/vendor/bin:$PATH"
+
     eval $(/usr/libexec/path_helper -s)
 
     # fix a bug in GNU grep caused by setting GREP_OPTIONS
@@ -37,6 +39,8 @@ if [ "$machine" = "Darwin" ]; then
 fi
 
 if [ "$machine" = "Linux" ]; then
+    export PATH="$HOME/.config/composer/vendor/bin:$PATH"
+
     alias ls='ls -Fh --color'
     export GITHUB_KEY_LOCATION=~/.ssh/github_vvmk_trellist
     export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
