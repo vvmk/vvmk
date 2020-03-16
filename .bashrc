@@ -54,7 +54,7 @@ fi
 export PATH="$PATH:$HOME/.rvm/bin"
 
 # shell customization {
-export PS1="\[\033[36m\]\u\[\033[0m\]\$\[\e[0m\] "
+export PS1="\[$iterm2_prompt_mark\]\[\033[36m\]\u\[\033[0m\]\$\[\e[0m\] "
 export CLICOLOR=1
 export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 # }
@@ -121,12 +121,12 @@ addkey() {
 # TODO: only works for origin/branch, add support for different remotes
 chremote() {
     remote='origin'
+    git checkout "$remote/$1"
     git checkout -b "$1"
-    git pull "$remote" "$1"
 }
 
 porig() {
-    find . -name ".orig" -delete vs find . -name 
+    find . -name ".orig" -delete 
 }
 
 # added by travis gem
