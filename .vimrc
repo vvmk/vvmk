@@ -167,6 +167,7 @@ function! HTMLStart()
     return '	'
 endfunction
 autocmd FileType html iabbrev htmls <C-R>=HTMLStart()<CR><C-R>=Eatchar('\t')<CR>
+autocmd FileType php iabbrev htmls <C-R>=HTMLStart()<CR><C-R>=Eatchar('\t')<CR>
 
 "JavaScript
 
@@ -273,9 +274,9 @@ function! PHPFunctionStub(modifier)
     execute "AutoCloseOn"
     return ''
 endfunction
-autocmd FileType php iabbrev <silent> met <C-R>=PHPPublicFunction('public')<CR><C-R>=Eatchar('\s')<CR>
-autocmd FileType php iabbrev <silent> metp <C-R>=PHPPublicFunction('private')<CR><C-R>=Eatchar('\s')<CR>
-autocmd FileType php iabbrev <silent> metpro <C-R>=PHPPublicFunction('protected')<CR><C-R>=Eatchar('\s')<CR>
+autocmd FileType php iabbrev <silent> met <C-R>=PHPFunctionStub('public')<CR><C-R>=Eatchar('\s')<CR>
+autocmd FileType php iabbrev <silent> metp <C-R>=PHPFunctionStub('private')<CR><C-R>=Eatchar('\s')<CR>
+autocmd FileType php iabbrev <silent> metpro <C-R>=PHPFunctionStub('protected')<CR><C-R>=Eatchar('\s')<CR>
 
 "lara.vim
 nmap <leader>lr :e routes/web.php<CR>
