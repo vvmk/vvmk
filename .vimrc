@@ -314,6 +314,21 @@ endfunction
 " iabbrev if <C-R>=BladeEndDirective("if")<CR>
 " iabbrev while <C-R>=BladeEndDirective("while")<CR>
 
+function! LaravimPivotTable()
+    let first = input('owner resource (i.e. user): ')
+    let second = input('pivot to (i.e.following): ')
+
+    let pivotName = '' . first . '_' . second . '_id'
+
+    execute "normal i$table->primary(['" . first . "_id', '" . pivotName . "']);$table->foreignId('" . first . "_id');$table->foreignId('" . pivotName . "');$table->timestamps();"
+
+    execute "normal i$table->foreign('" . first . "_id')->references('id')->on('" . first . "s')->onDelete('cascade');"
+    execute "normal i$table->foreign('" . pivotName . "')->references('id')->on('" . first . "s')->onDelete('cascade');"
+
+    return '	'
+endfunction
+autocmd FileType php iabbrev pivotschema <C-R>=LaravimPivotTable()<CR><C-R>=Eatchar('\t')<CR>
+
 "go
 autocmd FileType go noremap <leader>t :GoAlternate<CR>
 
