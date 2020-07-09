@@ -25,7 +25,7 @@ case "${unameOut}" in
     *) machine="UNKNOWN:${unameOut}"
 esac
 
-if [ "$machine" = "Darwin" ]; then
+if [ "$machine" = "Mac" ]; then
     eval $(/usr/libexec/path_helper -s)
 
     # fix a bug in GNU grep caused by setting GREP_OPTIONS
@@ -34,6 +34,8 @@ if [ "$machine" = "Darwin" ]; then
     unset GREP_OPTIONS
 
     alias ls='ls -GFh'
+    alias lols='ls -GFh | lolcat'
+    alias pwd='pwd | lolcat'
 fi
 
 if [ "$machine" = "Linux" ]; then
