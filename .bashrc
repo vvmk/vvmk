@@ -36,6 +36,7 @@ if [ "$machine" = "Mac" ]; then
     alias ls='ls -GFh'
     alias lols='ls -GFh | lolcat'
     alias pwd='pwd | lolcat'
+    alias pwdls='pwd && ls'
 fi
 
 if [ "$machine" = "Linux" ]; then
