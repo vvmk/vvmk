@@ -57,7 +57,7 @@ fi
 export PATH="$PATH:$HOME/.rvm/bin"
 
 # shell customization {
-export PS1="\[$iterm2_prompt_mark\]\[\033[36m\]\u\[\033[0m\]\$\[\e[0m\] "
+export PS1="\[\033[36m\]\u\[\033[0m\]\$\[\e[0m\] "
 export CLICOLOR=1
 export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 # }
