@@ -2,7 +2,6 @@
 export GOPATH=/Users/V/go
 export PATH=$PATH:$GOPATH/bin:/Users/V/code/exercism/go
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH="$HOME/.composer/vendor/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="~/bin:$PATH"
 
@@ -26,6 +25,7 @@ case "${unameOut}" in
 esac
 
 if [ "$machine" = "Mac" ]; then
+    export PATH="$HOME/.composer/vendor/bin:$PATH"
     eval $(/usr/libexec/path_helper -s)
 
     # fix a bug in GNU grep caused by setting GREP_OPTIONS
@@ -40,6 +40,8 @@ if [ "$machine" = "Mac" ]; then
 fi
 
 if [ "$machine" = "Linux" ]; then
+    export PATH="$HOME/.config/composer/vendor/bin:$PATH"
+
     alias ls='ls -Fh --color'
     export GITHUB_KEY_LOCATION=~/.ssh/github_vvmk_trellist
     export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
@@ -121,15 +123,28 @@ addkey() {
     eval $(ssh-agent -s)
     ssh-add $arg
 }
-# TODO: only works for origin/branch, add support for different remotes
-chremote() {
-    remote='origin'
-    git checkout "$remote/$1"
-    git checkout -b "$1"
+
+git-big() {
+    if [[ -z $1 ]]; then
+        arg=20
+    else
+        arg1=$1
+    fi
+
+    git rev-list master | while read rev; do git ls-tree -lr $rev  | cut -c54- | sed -r 's/^ +//g;'; done  | sort -u | perl -e 'while (<>) { chomp; @stuff=split("\t");$sums{$stuff[1]} += $stuff[0];} print "$sums{$_} $_\n" for (keys %sums);' | sort -rn | head -n $arg
 }
 
-porig() {
-    find . -name ".orig" -delete 
+git-purge() {
+if [[ -z $1 ]]; then
+    echo "error: missing arg: path"
+    echo "Usage: git-purge <path_to_file(s)_to_purge>"
+fi
+    git filter-branch --force --index-filter "git rm --cached --ignore-unmatch $1" --prune-empty --tag-name-filter cat -- --all
+}
+
+git-all() {
+    find . -mindepth 1 -maxdepth 1 -type d -print -exec git -C {} $1 \;
+>>>>>>> origin/master
 }
 
 # added by travis gem
