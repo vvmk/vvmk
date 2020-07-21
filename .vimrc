@@ -79,10 +79,7 @@ colorscheme dracula
 " SetColors(g:colorList)
 
 " Fugitive sets this to 50 for the short message. 72 is fine for the body
-augroup filetype_gitcommit
-    autocmd!
-    autocmd Filetype gitcommit setlocal spell textwidth=72
-augroup END
+autocmd Filetype gitcommit setlocal spell textwidth=72
 
 set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 
@@ -99,7 +96,7 @@ command Wq wq
 command W w
 command Q q
 nnoremap == gg=G``zz
-nnoremap <S-H> 079lBi<CR><Esc>$
+nnoremap <S-H> 079lbi<CR><Esc>$
 " iunmap <C-U>
 inoremap <C-U> <Esc>gUiwea
 inoremap <C-L> <C-O>a
@@ -152,6 +149,8 @@ map <leader>gw :Gwrite<CR>
 map <leader>gc :Gcommit<CR>
 map <leader>gd :Gdiff<CR>
 map <leader>g. :Dispatch git add .<CR>
+"dispatch
+autocmd FileType javascript let b:dispatch = 'npm run watch'
 
 "python
 " Trim whitespace in py files
@@ -167,18 +166,8 @@ function! HTMLStart()
     execute 'normal o</head><body></body></html>kO'
     return '	'
 endfunction
-
-augroup filetype_php
-    autocmd!
-    autocmd FileType php iabbrev htmls <C-R>=HTMLStart()<CR><C-R>=Eatchar('\t')<CR>
-augroup END
-
-augroup filetype_html
-    autocmd!
-    autocmd FileType html iabbrev htmls <C-R>=HTMLStart()<CR><C-R>=Eatchar('\t')<CR>
-    autocmd FileType html nnoremap <buffer> <localleader>f Vatzf
-    autocmd FileType html nnoremap <buffer> <localleader>uf Vzd
-augroup END
+autocmd FileType html iabbrev htmls <C-R>=HTMLStart()<CR><C-R>=Eatchar('\t')<CR>
+autocmd FileType php iabbrev htmls <C-R>=HTMLStart()<CR><C-R>=Eatchar('\t')<CR>
 
 "JavaScript
 
@@ -193,15 +182,7 @@ function! JavascriptConsoleLog()
 endfunction
 iabbrev <silent> cl. <C-R>=JavascriptConsoleLog()<CR><C-R>=Eatchar('\t')<CR>
 
-augroup filetype_javascript
-    autocmd!
-
-    "dispatch
-    autocmd FileType javascript let b:dispatch = 'npm run watch'
-augroup END
-
 "Vue
-
 function! VueEmptyComponent()
     let componentName = input('Name? ')
     execute "normal iVue.component('" . componentName . "', {});kko"
@@ -223,13 +204,11 @@ function! VueAddRoute()
     execute 'normal! ha'
     return ''
 endfunction
-augroup filetype_vue
-    autocmd!
-    autocmd FileType vue nnoremap <leader>ar :call VueAddRoute()<CR>
-    autocmd FileType javascript nnoremap <leader>ar :call VueAddRoute()<CR>
-augroup END
+autocmd FileType vue nnoremap <leader>ar :call VueAddRoute()<CR>
+autocmd FileType javascript nnoremap <leader>ar :call VueAddRoute()<CR>
 
 "php
+autocmd BufEnter,BufRead *.blade.php set ft=html.php
 iabbrev $t $this-><C-R>=Eatchar('\t')<CR>
 function! PHPClass()
     let name = input('Class name? ')
@@ -324,6 +303,7 @@ function! LaravimUseUnderCursor()
     let pre = input("use ")
     execute "normal gg/classkOuse " . pre . '\' . cw . ";2\<c-o>"
 endfunction
+autocmd FileType php noremap <leader>i :call LaravimUseUnderCursor()<CR>
 
 " TODO: 
 function! BladeEndDirective(opening)
@@ -351,18 +331,14 @@ autocmd FileType php iabbrev pivotschema <C-R>=LaravimPivotTable()<CR><C-R>=Eatc
 
 "go
 autocmd FileType go noremap <leader>t :GoAlternate<CR>
+
 function! GoIfErrNotNil()
     exec "AutoCloseOff"
     exec "normal iif err != nil {\<CR>}\<Esc>O"
     exec "AutoCloseOn"
     return ""
 endfunction
-
-augroup filetype_go
-    autocmd!
-    autocmd FileType go noremap <leader>t :GoAlternate<CR>
-    autocmd FileType go iabbrev <silent> ifern <C-R>=GoIfErrNotNil()<CR>
-augroup END
+autocmd FileType go iabbrev <silent> ifern <C-R>=GoIfErrNotNil()<CR>
 
 "abbrev
 iabbrev cadc complexaesthetic.com
@@ -399,18 +375,12 @@ call arpeggio#map('n', '', 0, 'qf', ':copen<CR>')
 call arpeggio#map('n', '', 0, 'wv', ':vertical resize +5<CR>')
 call arpeggio#map('n', '', 0, 'wh', ':resize +5<CR>')
 call arpeggio#map('n', '', 0, 'rt', ':call RunTestsForProject()<CR>')
-augroup arpeggio
-    autocmd!
-    autocmd FileType go call arpeggio#map('n', '', 0, 'kb', ':GoDocBrowser<CR>')
-augroup END
+autocmd FileType go call arpeggio#map('n', '', 0, 'kb', ':GoDocBrowser<CR>')
 
 " ng
-augroup filetype_typescript
-    autocmd!
-    autocmd FileType typescript Arpeggio noremap ac :EComponent<CR>
-    autocmd FileType typescript Arpeggio noremap at :ETemplate<CR>
-    autocmd FileType typescript Arpeggio noremap as :EStylesheet<CR>
-augroup END
+autocmd FileType typescript Arpeggio noremap ac :EComponent<CR>
+autocmd FileType typescript Arpeggio noremap at :ETemplate<CR>
+autocmd FileType typescript Arpeggio noremap as :EStylesheet<CR>
 
 "globals
 let g:netrw_banner = 0
@@ -434,11 +404,8 @@ let g:user_emmet_leader_key = '<C-y>'
 " submit a PR
 let g:gnu_grep = 'ggrep'
 
-augroup angular_cli
-    autocmd!
-    autocmd VimEnter * if globpath('.,..','node_modules/@angular') != '' | call angular_cli#init() | endif
-    autocmd VimEnter * set wildignore+=*/node_modules/** " breaks angular-vim
-augroup END
+autocmd VimEnter * if globpath('.,..','node_modules/@angular') != '' | call angular_cli#init() | endif
+autocmd VimEnter * set wildignore+=*/node_modules/** " breaks angular-vim
 
 " keep an empty space after the following commands, save many keystrokes
 " TODO: conditionally load only when angular_cli.vim is loaded
@@ -455,10 +422,7 @@ map <leader>t :ESpec<CR>
 let python_highlight_all = 1
 
 " hopefully avoid vim getting confused by vue file syntax
-augroup vue_syntax
-    autocmd!
-    autocmd FileType vue syntax sync fromstart
-augroup END
+autocmd FileType vue syntax sync fromstart
 
 let g:airline_theme='onedark'
 
@@ -476,10 +440,11 @@ let g:ale_sign_column_always = 0
 
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
-            \ 'javascript': ['eslint', 'prettier'],
-            \ 'typescript': ['tslint', 'prettier'],
+            \ 'javascript': ['eslint'],
+            \ 'typescript': ['tslint'],
             \ 'css': ['prettier'],
             \ 'scss': ['prettier'],
+            \ 'vue': ['prettier'],
             \ 'markdown': ['prettier'],
             \ 'json': ['prettier'],
             \ 'sh': ['shfmt'],
@@ -488,12 +453,3 @@ let g:ale_fixers = {
 let g:ctrlp_working_path_mode = 'r'
 
 let g:PHP_removeCRwhenUnix = 1
-
-let g:surround_indent = 1
-
-let g:template_dir_path = '/home/v/.vim/template'
-augroup templates
-    autocmd!
-    autocmd BufNewFile * :silent! execute "r " . g:template_dir_path . "/t." . &filetype
-augroup END
-
