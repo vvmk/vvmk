@@ -79,7 +79,10 @@ colorscheme dracula
 " SetColors(g:colorList)
 
 " Fugitive sets this to 50 for the short message. 72 is fine for the body
-autocmd Filetype gitcommit setlocal spell textwidth=72
+augroup filetype_gitcommit
+    autocmd!
+    autocmd Filetype gitcommit setlocal spell textwidth=72
+augroup END
 
 set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 
@@ -150,11 +153,17 @@ map <leader>gc :Gcommit<CR>
 map <leader>gd :Gdiff<CR>
 map <leader>g. :Dispatch git add .<CR>
 "dispatch
-autocmd FileType javascript let b:dispatch = 'npm run watch'
+augroup filetype_javascript
+    autocmd!
+    autocmd FileType javascript let b:dispatch = 'npm run watch'
+augroup END
 
 "python
 " Trim whitespace in py files
-autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
+augroup py_whitespace
+    autocmd!
+    autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
+augroup END
 
 "html
 function! HTMLStart()
@@ -166,8 +175,11 @@ function! HTMLStart()
     execute 'normal o</head><body></body></html>kO'
     return '	'
 endfunction
-autocmd FileType html iabbrev htmls <C-R>=HTMLStart()<CR><C-R>=Eatchar('\t')<CR>
-autocmd FileType php iabbrev htmls <C-R>=HTMLStart()<CR><C-R>=Eatchar('\t')<CR>
+augroup filetype_html_php
+    autocmd!
+    autocmd FileType html iabbrev htmls <C-R>=HTMLStart()<CR><C-R>=Eatchar('\t')<CR>
+    autocmd FileType php iabbrev htmls <C-R>=HTMLStart()<CR><C-R>=Eatchar('\t')<CR>
+augroup END
 
 "JavaScript
 
@@ -204,11 +216,17 @@ function! VueAddRoute()
     execute 'normal! ha'
     return ''
 endfunction
-autocmd FileType vue nnoremap <leader>ar :call VueAddRoute()<CR>
-autocmd FileType javascript nnoremap <leader>ar :call VueAddRoute()<CR>
+augroup filetype_vue_js
+    autocmd!
+    autocmd FileType vue nnoremap <leader>ar :call VueAddRoute()<CR>
+    autocmd FileType javascript nnoremap <leader>ar :call VueAddRoute()<CR>
+augroup END
 
 "php
-autocmd BufEnter,BufRead *.blade.php set ft=html.php
+augroup php_buf
+    autocmd!
+    autocmd BufEnter,BufRead *.blade.php set ft=html.php
+augroup END
 iabbrev $t $this-><C-R>=Eatchar('\t')<CR>
 function! PHPClass()
     let name = input('Class name? ')
@@ -274,9 +292,6 @@ function! PHPFunctionStub(modifier)
     execute "AutoCloseOn"
     return ''
 endfunction
-autocmd FileType php iabbrev <silent> met <C-R>=PHPFunctionStub('public')<CR><C-R>=Eatchar('\s')<CR>
-autocmd FileType php iabbrev <silent> metp <C-R>=PHPFunctionStub('private')<CR><C-R>=Eatchar('\s')<CR>
-autocmd FileType php iabbrev <silent> metpro <C-R>=PHPFunctionStub('protected')<CR><C-R>=Eatchar('\s')<CR>
 
 "lara.vim
 nmap <leader>lr :e routes/web.php<CR>
@@ -303,7 +318,6 @@ function! LaravimUseUnderCursor()
     let pre = input("use ")
     execute "normal gg/classkOuse " . pre . '\' . cw . ";2\<c-o>"
 endfunction
-autocmd FileType php noremap <leader>i :call LaravimUseUnderCursor()<CR>
 
 " TODO: 
 function! BladeEndDirective(opening)
@@ -327,18 +341,30 @@ function! LaravimPivotTable()
 
     return '	'
 endfunction
-autocmd FileType php iabbrev pivotschema <C-R>=LaravimPivotTable()<CR><C-R>=Eatchar('\t')<CR>
+
+augroup filetype_php
+    autocmd!
+    autocmd FileType php iabbrev <silent> met <C-R>=PHPFunctionStub('public')<CR><C-R>=Eatchar('\s')<CR>
+    autocmd FileType php iabbrev <silent> metp <C-R>=PHPFunctionStub('private')<CR><C-R>=Eatchar('\s')<CR>
+    autocmd FileType php iabbrev <silent> metpro <C-R>=PHPFunctionStub('protected')<CR><C-R>=Eatchar('\s')<CR>
+    autocmd FileType php noremap <leader>i :call LaravimUseUnderCursor()<CR>
+    autocmd FileType php iabbrev pivotschema <C-R>=LaravimPivotTable()<CR><C-R>=Eatchar('\t')<CR>
+augroup END
 
 "go
-autocmd FileType go noremap <leader>t :GoAlternate<CR>
-
 function! GoIfErrNotNil()
     exec "AutoCloseOff"
     exec "normal iif err != nil {\<CR>}\<Esc>O"
     exec "AutoCloseOn"
     return ""
 endfunction
-autocmd FileType go iabbrev <silent> ifern <C-R>=GoIfErrNotNil()<CR>
+
+augroup filetype_go
+    autocmd!
+    autocmd FileType go noremap <leader>t :GoAlternate<CR>
+    autocmd FileType go iabbrev <silent> ifern <C-R>=GoIfErrNotNil()<CR>
+    autocmd FileType go call arpeggio#map('n', '', 0, 'kb', ':GoDocBrowser<CR>')
+augroup END
 
 "abbrev
 iabbrev cadc complexaesthetic.com
@@ -375,12 +401,14 @@ call arpeggio#map('n', '', 0, 'qf', ':copen<CR>')
 call arpeggio#map('n', '', 0, 'wv', ':vertical resize +5<CR>')
 call arpeggio#map('n', '', 0, 'wh', ':resize +5<CR>')
 call arpeggio#map('n', '', 0, 'rt', ':call RunTestsForProject()<CR>')
-autocmd FileType go call arpeggio#map('n', '', 0, 'kb', ':GoDocBrowser<CR>')
 
 " ng
-autocmd FileType typescript Arpeggio noremap ac :EComponent<CR>
-autocmd FileType typescript Arpeggio noremap at :ETemplate<CR>
-autocmd FileType typescript Arpeggio noremap as :EStylesheet<CR>
+augroup filetype_ng
+    autocmd!
+    autocmd FileType typescript Arpeggio noremap ac :EComponent<CR>
+    autocmd FileType typescript Arpeggio noremap at :ETemplate<CR>
+    autocmd FileType typescript Arpeggio noremap as :EStylesheet<CR>
+augroup END
 
 "globals
 let g:netrw_banner = 0
