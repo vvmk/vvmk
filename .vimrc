@@ -57,6 +57,7 @@ set noerrorbells
 
 " colors
 set background=dark
+" colorscheme VIvid
 colorscheme dracula
 " colorscheme badwolf
 " colorscheme onedark
@@ -75,6 +76,7 @@ colorscheme dracula
 "             \'xoria256',
 "             \'mayansmoke',
 "             \'badwolf',
+"             \'xcode',
 "             \]
 " SetColors(g:colorList)
 
