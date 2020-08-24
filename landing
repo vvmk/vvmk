@@ -18,6 +18,7 @@ git clone https://github.com/kien/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim
 git clone https://github.com/dracula/vim.git ~/.vim/bundle/vim
 git clone https://github.com/mattn/emmet-vim.git ~/.vim/bundle/emmet-vim
 git clone https://github.com/vvmk/pale-ale.git ~/.vim/bundle/pale-ale
+git clone https://github.com/dense-analysis/ale.git ~/.vim/bundle/ale
 git clone https://github.com/StanAngeloff/php.vim.git ~/.vim/bundle/php.vim
 git clone https://github.com/hdima/python-syntax.git ~/.vim/bundle/python-syntax
 git clone https://tpope.io/vim/sensible.git ~/.vim/bundle/setcolors.vim
@@ -31,11 +32,13 @@ git clone https://github.com/tpope/vim-bundler.git ~/.vim/bundle/vim-colorscheme
 git clone https://github.com/flazz/vim-colorschemes.git ~/.vim/bundle/vim-commentary
 git clone https://github.com/tpope/vim-commentary.git ~/.vim/bundle/vim-dispatch
 git clone https://github.com/tpope/vim-dispatch.git ~/.vim/bundle/vim-endwise
+git clone https://github.com/vvmk/vim-endwise.git ~/.vim/bundle/vim-endwise
 git clone https://github.com/tpope/vim-endwise.git ~/.vim/bundle/vim-fugitive
 git clone https://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-go
 git clone https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-javascript
 git clone https://github.com/pangloss/vim-javascript.git ~/.vim/bundle/vim-markdown
-git clone https://github.com/tpope/vim-markdown.git ~/.vim/bundle/vim-rails
+git clone https://github.com/tpope/vim-markdown.git ~/.vim/bundle/vim-polyglot
+git clone https://github.com/sheerun/vim-polyglot.git ~/.vim/bundle/vim-rails
 git clone https://github.com/tpope/vim-rails.git ~/.vim/bundle/vim-repeat
 git clone https://github.com/tpope/vim-repeat.git ~/.vim/bundle/vim-rsi
 git clone https://github.com/tpope/vim-rsi.git ~/.vim/bundle/vim-scriptease

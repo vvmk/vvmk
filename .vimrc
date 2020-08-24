@@ -225,10 +225,10 @@ augroup filetype_vue_js
 augroup END
 
 "php
-augroup php_buf
-    autocmd!
-    autocmd BufEnter,BufRead *.blade.php set ft=html.php
-augroup END
+" augroup php_buf
+"     autocmd!
+"     autocmd BufEnter,BufRead *.blade.php set ft=html.php
+" augroup END
 iabbrev $t $this-><C-R>=Eatchar('\t')<CR>
 function! PHPClass()
     let name = input('Class name? ')
@@ -478,6 +478,7 @@ let g:ale_fixers = {
             \ 'markdown': ['prettier'],
             \ 'json': ['prettier'],
             \ 'sh': ['shfmt'],
+            \ 'html': ['fecs'],
             \}
 
 let g:ctrlp_working_path_mode = 'r'
