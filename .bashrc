@@ -37,6 +37,8 @@ if [ "$machine" = "Mac" ]; then
     alias lols='ls -GFh | lolcat'
     alias pwd='pwd | lolcat'
     alias pwdls='pwd && ls'
+
+    eval $(thefuck --alias fuck)
 fi
 
 if [ "$machine" = "Linux" ]; then
