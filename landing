@@ -38,7 +38,8 @@ git clone https://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-go
 git clone https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-javascript
 git clone https://github.com/pangloss/vim-javascript.git ~/.vim/bundle/vim-markdown
 git clone https://github.com/tpope/vim-markdown.git ~/.vim/bundle/vim-polyglot
-git clone https://github.com/sheerun/vim-polyglot.git ~/.vim/bundle/vim-rails
+git clone https://github.com/sheerun/vim-polyglot.git ~/.vim/bundle/vim-ragtag
+git clone https://github.com/tpope/vim-ragtag.git ~/.vim/bundle/vim-rails
 git clone https://github.com/tpope/vim-rails.git ~/.vim/bundle/vim-repeat
 git clone https://github.com/tpope/vim-repeat.git ~/.vim/bundle/vim-rsi
 git clone https://github.com/tpope/vim-rsi.git ~/.vim/bundle/vim-scriptease
