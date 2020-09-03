@@ -38,7 +38,9 @@ if [ "$machine" = "Mac" ]; then
     alias pwd='pwd | lolcat'
     alias pwdls='pwd && ls'
 
-    eval $(thefuck --alias fuck)
+    eval $(thefuck --alias)
+    alias tinker='php artisan tinker'
+    alias mfs='php artisan migrate:fresh && php artisan db:seed'
 fi
 
 if [ "$machine" = "Linux" ]; then
