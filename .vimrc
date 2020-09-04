@@ -300,7 +300,7 @@ nmap <leader>lr :e routes/web.php<CR>
 nmap <leader>lca :e app/config/app.php<CR>81Gf(%O
 nmap <leader>lcd :e app/config/database.php<CR>
 nmap <leader>lc :e composer.json<CR>
-cabbrev pa Dispatch php artisan
+cabbrev artisan Dispatch php artisan
 cabbrev pam Dispatch php artisan migrate
 cabbrev pamm Dispatch php artisan make:model
 cabbrev pamc Dispatch php artisan make:controller
@@ -344,6 +344,16 @@ function! LaravimPivotTable()
     return '	'
 endfunction
 
+function! PHPUnitAssertFail()
+    if (expand('%:t:r') =~? 'test$')
+        echom 'yeah!'
+        exec "AutoCloseOff"
+        exec "normal! i$this->fail('todo');"
+        exec "AutoCloseOn"
+    endif
+    return ''
+endfunction
+
 augroup filetype_php
     autocmd!
     autocmd FileType php iabbrev <silent> met <C-R>=PHPFunctionStub('public')<CR><C-R>=Eatchar('\s')<CR>
@@ -351,6 +361,7 @@ augroup filetype_php
     autocmd FileType php iabbrev <silent> metpro <C-R>=PHPFunctionStub('protected')<CR><C-R>=Eatchar('\s')<CR>
     autocmd FileType php noremap <leader>i :call LaravimUseUnderCursor()<CR>
     autocmd FileType php iabbrev pivotschema <C-R>=LaravimPivotTable()<CR><C-R>=Eatchar('\t')<CR>
+    autocmd FileType php iabbrev fail <C-R>=PHPUnitAssertFail()<CR><C-R>=Eatchar('\t')<CR><Esc>$
 augroup END
 
 "go
