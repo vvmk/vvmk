@@ -73,7 +73,7 @@ alias g='git'
 alias cl='clear'
 alias gl='cl && git lol'
 alias gb='git branch'
-alias art='php artisan'
+alias artisan='php artisan'
 
 if [ -x "$(command -v lolcat)" ]; then
     alias cat='lolcat'
