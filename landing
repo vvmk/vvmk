@@ -17,6 +17,7 @@ git clone https://github.com/bdauria/angular-cli.vim.git ~/.vim/bundle/angular-c
 git clone https://github.com/kien/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim
 git clone https://github.com/dracula/vim.git ~/.vim/bundle/vim
 git clone https://github.com/mattn/emmet-vim.git ~/.vim/bundle/emmet-vim
+git clone https://github.com/junegunn/goyo.vim.git ~/.vim/bundle/goyo.vim
 git clone https://github.com/vvmk/pale-ale.git ~/.vim/bundle/pale-ale
 git clone https://github.com/dense-analysis/ale.git ~/.vim/bundle/ale
 git clone https://github.com/StanAngeloff/php.vim.git ~/.vim/bundle/php.vim
