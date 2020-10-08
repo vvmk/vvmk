@@ -95,16 +95,11 @@ mkcd() {
 gi() {
     curl -L -s https://www.gitignore.io/api/$@ ;
 }
-ohayo() {
+ohayoo() {
     echo "Good Morning, $USER"
     brew doctor
     brew upgrade
     bash -c '~/.vim/update'
-}
-mvnquick() {
-    mvn archetype:generate -DgroupId=$1 -DartifactId=$2 \
-        -DarchetypeArtifactId=maven-archetype-quickstart \
-        -DinteractiveMode=false
 }
 usejava() {
     export JAVA_HOME=`/usr/libexec/java_home -v $1`
@@ -115,25 +110,6 @@ dockersh() {
 }
 gosrc() {
     cd "$GOPATH/src/github.com/vvmk/$1"
-}
-addkey() {
-    if [[ -z $1 ]]; then
-        arg=$GITHUB_KEY_LOCATION
-    else
-        arg=$1
-    fi
-    eval $(ssh-agent -s)
-    ssh-add $arg
-}
-# TODO: only works for origin/branch, add support for different remotes
-chremote() {
-    remote='origin'
-    git checkout "$remote/$1"
-    git checkout -b "$1"
-}
-
-porig() {
-    find . -name ".orig" -delete 
 }
 
 # added by travis gem
