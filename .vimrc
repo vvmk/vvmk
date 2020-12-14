@@ -18,6 +18,9 @@ set wildignore+=*.so,*.swp,*.zip
 set wildignore+=*/vendor/**
 set wildignore+=*/public/forum/**
 set wildignore+=*/wwwroot/**
+set wildignore+=*/build_local/**
+set wildignore+=*/build_staging/**
+set wildignore+=*/build_production/**
 "end experimental
 
 func Eatchar(pat)
@@ -122,6 +125,9 @@ map <leader>es :sp %%
 map <leader>ev :vsp %%
 map <leader>et :tabe %%
 
+nmap <leader>a8 :Tabularize /<C-R>=expand("<cword>")<CR><CR>
+vmap <leader>a8 :Tabularize /<C-R>=expand("<cword>")<CR><CR>
+
 function s:MkNonExDir(file, buf)
     if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
         let dir=fnamemodify(a:file, ':h')
@@ -142,6 +148,7 @@ function! SubUnderCursor()
     execute 'normal :%s/' . cw . '/' . rep . '/g'
 endfunction
 map <leader>ss :call SubUnderCursor()<CR>
+
 
 "leaders
 nmap <leader>w :w!<CR>
@@ -177,10 +184,22 @@ function! HTMLStart()
     execute 'normal o</head><body></body></html>kO'
     return '	'
 endfunction
+
+"<ul>
+"<ul class="some stuff here w-1/2 h-full ">
+"<ul class="some stuff here w-1/2 h-full"  style="height:123px;">
+function! HTMLClassList()
+    echom 'hello html'
+    execute 'normal f>i class=""hi'
+    return ''
+endfunction
+
 augroup filetype_html_php
     autocmd!
     autocmd FileType html iabbrev htmls <C-R>=HTMLStart()<CR><C-R>=Eatchar('\t')<CR>
     autocmd FileType php iabbrev htmls <C-R>=HTMLStart()<CR><C-R>=Eatchar('\t')<CR>
+    autocmd FileType html call arpeggio#map('n', '', 0, 'cs', ':call HTMLClassList()<CR>')
+    autocmd FileType php call arpeggio#map('n', '', 0, 'cs', ':call HTMLClassList()<CR>')
 augroup END
 
 "JavaScript

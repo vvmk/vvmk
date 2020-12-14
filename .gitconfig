@@ -27,6 +27,7 @@
 	ca = commit -a
 	fa = fetch --all
 	aliases = config --get-regexp ^alias\\.
+	fuck = commit -a --amend
 [init]
 	templatedir = ~/.git_template
 [merge]

@@ -41,6 +41,7 @@ if [ "$machine" = "Mac" ]; then
     eval $(thefuck --alias)
     alias tinker='php artisan tinker'
     alias mfs='php artisan migrate:fresh && php artisan db:seed'
+    alias jigsaw='./vendor/bin/jigsaw'
 fi
 
 if [ "$machine" = "Linux" ]; then
