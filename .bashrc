@@ -82,29 +82,9 @@ gosrc() {
   cd "$GOPATH/src/github.com/vvmk/$1"
 }
 satis() {
-  php bin/satis build ~/src/satis/satis.json ~/src/satis/web --no-interaction
+  cd ~/src/satis
+  php bin/satis build --no-interaction ~/src/satis/satis.json ~/src/satis/web 
   php -S localhost:8888 -t ~/src/satis/web/
-}
-jigsawphp8() {
-  composer require --ignore-platform-reqs tightenco/jigsaw
-  sed -i 's/"php": "^7.2"/"php": "^7.2|^8.0"/g' composer.lock
-  cat <<EOF > composer.json
-{
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "localhost:8888"
-    }
-  ],
-  "require": {
-    "tightenco/jigsaw": "^1.3"
-  },
-  "config": {
-    "secure-http": false
-  }
-}
-EOF
-./vendor/bin/jigsaw init vvmk/jigsaw-epicmc2-template:dev-master
 }
 
 # added by travis gem

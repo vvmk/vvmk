@@ -105,8 +105,6 @@ command W w
 command Q q
 nnoremap == gg=G``zz
 nnoremap <S-H> 079lbi<CR><Esc>$
-" iunmap <C-U>
-inoremap <C-U> <Esc>gUiwea
 inoremap <C-L> <C-O>a
 
 " splits
