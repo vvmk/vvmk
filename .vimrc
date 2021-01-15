@@ -506,7 +506,6 @@ let g:ale_fixers = {
             \ 'markdown': ['prettier'],
             \ 'json': ['prettier'],
             \ 'sh': ['shfmt'],
-            \ 'html': ['fecs'],
             \}
 
 let g:ctrlp_working_path_mode = 'r'
