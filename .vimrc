@@ -378,7 +378,7 @@ augroup filetype_php
     autocmd FileType php iabbrev <silent> metpro <C-R>=PHPFunctionStub('protected')<CR><C-R>=Eatchar('\s')<CR>
     autocmd FileType php noremap <leader>i :call LaravimUseUnderCursor()<CR>
     autocmd FileType php iabbrev pivotschema <C-R>=LaravimPivotTable()<CR><C-R>=Eatchar('\t')<CR>
-    autocmd FileType php iabbrev fail <C-R>=PHPUnitAssertFail()<CR><C-R>=Eatchar('\t')<CR><Esc>$
+    autocmd FileType php iabbrev assertfail <C-R>=PHPUnitAssertFail()<CR><C-R>=Eatchar('\t')<CR><Esc>$
 augroup END
 
 "go

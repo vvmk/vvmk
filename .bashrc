@@ -1,6 +1,6 @@
 # path dump
-export GOPATH=/Users/V/go
-export PATH=$PATH:$GOPATH/bin:/Users/V/code/exercism/go
+export GOPATH=/Users/v/go
+export PATH=$PATH:$GOPATH/bin:/Users/v/code/exercism/go
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
@@ -86,6 +86,13 @@ satis() {
   php bin/satis build --no-interaction ~/src/satis/satis.json ~/src/satis/web 
   php -S localhost:8888 -t ~/src/satis/web/
 }
+slugify () {
+      echo "$1" | iconv -c -t ascii//TRANSLIT | sed -E 's/[~^]+//g' | sed -E 's/[^a-zA-Z0-9]+/-/g' | sed -E 's/^-+|-+$//g' | tr A-Z a-z
+}
 
 # added by travis gem
-[ -f /Users/V/.travis/travis.sh ] && source /Users/V/.travis/travis.sh
+[ -f /Users/v/.travis/travis.sh ] && source /Users/v/.travis/travis.sh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
