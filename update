@@ -33,7 +33,7 @@ curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim' >~/.vim/lan
 # the revised first half 
 find ~/.vim/bundle/*/.git/config | xargs -n 1 ggrep -Po 'url = \K.*.git' | xargs -n 1 -I {} bash -c 'echo git clone {}' >~/.vim/vvtemppart1
 # then create the second half from the first
-cat ~/.vim/vvtemppart1 | ggrep -Po '^.*github.com(:|/).+/\K.*(?=\.git)' | xargs -n 1 -I {} bash -c 'echo \~/.vim/bundle/{};' >~/.vim/vvtemppart2
+cat ~/.vim/vvtemppart1 | sed 's|^.*/||' | sed 's|\.git||' | xargs -n 1 -I {} bash -c 'echo \~/.vim/bundle/{};' >~/.vim/vvtemppart2
 # join em
 paste -d " " ~/.vim/vvtemppart1 ~/.vim/vvtemppart2 >>~/.vim/landing
 # lazy fix for repos using the ssh link
