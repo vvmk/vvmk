@@ -69,6 +69,8 @@ ohayoo() {
   echo "Good Morning, $USER"
   brew doctor
   brew upgrade
+  composer global upgrade
+  npm install -g npm@latest
   bash -c '~/.vim/update'
 }
 usejava() {
