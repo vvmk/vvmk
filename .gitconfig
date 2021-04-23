@@ -30,6 +30,7 @@
 	fuck = commit -a --amend
 [init]
 	templatedir = ~/.git_template
+	defaultBranch = master
 [merge]
 	tool = vimdiff
 	conflictstyle = diff3
