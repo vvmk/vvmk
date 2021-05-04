@@ -70,7 +70,9 @@ ohayoo() {
   brew doctor
   brew upgrade
   composer global upgrade
-  npm install -g npm@latest
+  npm install -g npm
+  nvm install node
+  npm doctor
   bash -c '~/.vim/update'
 }
 usejava() {
