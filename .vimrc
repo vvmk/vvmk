@@ -317,11 +317,7 @@ nmap <leader>lr :e routes/web.php<CR>
 nmap <leader>lca :e app/config/app.php<CR>81Gf(%O
 nmap <leader>lcd :e app/config/database.php<CR>
 nmap <leader>lc :e composer.json<CR>
-cabbrev artisan Dispatch php artisan
-cabbrev pam Dispatch php artisan migrate
-cabbrev pamm Dispatch php artisan make:model
-cabbrev pamc Dispatch php artisan make:controller
-cabbrev pammig Dispatch php artisan make:migration
+cabbrev artisan php artisan
 
 function! LaravimNewView()
     let path = input('views/')
@@ -379,6 +375,8 @@ augroup filetype_php
     autocmd FileType php noremap <leader>i :call LaravimUseUnderCursor()<CR>
     autocmd FileType php iabbrev pivotschema <C-R>=LaravimPivotTable()<CR><C-R>=Eatchar('\t')<CR>
     autocmd FileType php iabbrev assertfail <C-R>=PHPUnitAssertFail()<CR><C-R>=Eatchar('\t')<CR><Esc>$
+    autocmd FileType php noremap <leader>t :Dispatch php artisan test<CR>
+    autocmd FileType php noremap <leader>T :Dispatch php artisan test --filter =expand("<cword>")<CR><CR>
 augroup END
 
 "go
@@ -413,7 +411,7 @@ iabbrev cadc complexaesthetic.com
 function RunTestsForProject()
     let ft = &filetype
     if (ft == 'php')
-        execute 'normal:Dispatch phpunit'
+        execute 'normal:Dispatch php artisan test'
     elseif (ft == 'javascript' || ft == 'vue')
         execute 'normal:Start npm test'
     endif
@@ -438,6 +436,18 @@ augroup filetype_ng
     autocmd FileType typescript Arpeggio noremap ac :EComponent<CR>
     autocmd FileType typescript Arpeggio noremap at :ETemplate<CR>
     autocmd FileType typescript Arpeggio noremap as :EStylesheet<CR>
+
+    " keep an empty space after the following commands, save many keystrokes
+    " TODO: conditionally load only when angular_cli.vim is loaded
+    autocmd FileType typescript map <leader>ac :EComponent 
+    " map <leader>acc :EComponent<CR>
+    autocmd FileType typescript map <leader>at :ETemplate 
+    " map <leader>att :ETemplate<CR>
+    autocmd FileType typescript map <leader>as :EService 
+    autocmd FileType typescript map <leader>am :EModule 
+    autocmd FileType typescript map <leader>amm :EModule<CR>
+    " autocmd FileType typescript map <leader>ass :EStylesheet<CR> 
+    autocmd FileType typescript map <leader>t :ESpec<CR>
 augroup END
 
 "globals
@@ -464,18 +474,6 @@ let g:gnu_grep = 'ggrep'
 
 autocmd VimEnter * if globpath('.,..','node_modules/@angular') != '' | call angular_cli#init() | endif
 autocmd VimEnter * set wildignore+=*/node_modules/** " breaks angular-vim
-
-" keep an empty space after the following commands, save many keystrokes
-" TODO: conditionally load only when angular_cli.vim is loaded
-map <leader>ac :EComponent 
-" map <leader>acc :EComponent<CR>
-map <leader>at :ETemplate 
-" map <leader>att :ETemplate<CR>
-map <leader>as :EService 
-map <leader>am :EModule 
-map <leader>amm :EModule<CR>
-" map <leader>ass :EStylesheet<CR> 
-map <leader>t :ESpec<CR>
 
 let python_highlight_all = 1
 
