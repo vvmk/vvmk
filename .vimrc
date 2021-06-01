@@ -422,8 +422,9 @@ endfunction
 
 call arpeggio#map('i', '', 0, 'wjk', '<Esc>:write<CR>') " escape insert mode and write
 call arpeggio#map('i', '', 0, 'jk', '<Esc>')
-call arpeggio#map('n', '', 0, '`<Space>', ':Dispatch<Space>')
 call arpeggio#map('n', '', 0, '`1', ':Dispatch!<Space>')
+call arpeggio#map('n', '', 0, '`2', ':Dispatch<Space>')
+call arpeggio#map('n', '', 0, '`3', ':Focus<Space>')
 call arpeggio#map('n', '', 0, 'cl', ':ccl<CR>')
 call arpeggio#map('n', '', 0, 'qf', ':copen<CR>')
 call arpeggio#map('n', '', 0, 'wv', ':vertical resize +5<CR>')
