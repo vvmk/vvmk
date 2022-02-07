@@ -49,7 +49,7 @@ alias gb='git branch'
 alias artisan='php artisan'
 
 if [ -x "$(command -v lolcat)" ]; then
-  alias cat='lolcat'
+  alias lcat='lolcat'
 fi
 
 mkcd() {
