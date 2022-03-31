@@ -73,6 +73,7 @@ ohayoo() {
   npm install -g npm
   nvm install node
   npm doctor
+  for i in ~/.vim/bundle/*; do git -C $i pull; done
   bash -c '~/.vim/update'
 }
 usejava() {
