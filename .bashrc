@@ -66,7 +66,7 @@ gi() {
   curl -L -s https://www.gitignore.io/api/$@ ;
 }
 ohayoo() {
-  echo "Good Morning, $USER"
+  echo "Good Morning, Miss Violet."
   brew doctor
   brew upgrade
   composer global upgrade
