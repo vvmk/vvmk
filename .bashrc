@@ -97,6 +97,9 @@ slugify () {
 dush () {
   du -sh $1
 }
+flushdns () {
+  sudo killall -HUP mDNSResponder
+}
 
 # added by travis gem
 [ -f /Users/v/.travis/travis.sh ] && source /Users/v/.travis/travis.sh
