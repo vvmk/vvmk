@@ -100,6 +100,12 @@ dush () {
 flushdns () {
   sudo killall -HUP mDNSResponder
 }
+tailwind-watch () {
+  npx tailwindcss -i ./src/input.css -o ./src/output.css --watch
+}
+tailwind-build () {
+  npx tailwindcss -i ./src/input.css -o ./src/output.css
+}
 
 # added by travis gem
 [ -f /Users/v/.travis/travis.sh ] && source /Users/v/.travis/travis.sh
