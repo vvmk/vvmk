@@ -101,10 +101,10 @@ flushdns () {
   sudo killall -HUP mDNSResponder
 }
 tailwind-watch () {
-  npx tailwindcss -i ./src/input.css -o ./src/output.css --watch
+  npx tailwindcss -i ./src/base.css -o ./out.css --watch
 }
 tailwind-build () {
-  npx tailwindcss -i ./src/input.css -o ./src/output.css
+  npx tailwindcss -i ./src/base.css -o ./out.css
 }
 
 # added by travis gem
