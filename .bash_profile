@@ -17,3 +17,67 @@ export HERD_PHP_83_INI_SCAN_DIR="/Users/v/Library/Application Support/Herd/confi
 
 # Herd injected PHP binary.
 export PATH="/Users/v/Library/Application Support/Herd/bin/":$PATH
+
+
+# Herd injected PHP binary.
+export PATH="/Users/v/Library/Application Support/Herd/bin/":$PATH
+
+
+# Herd injected PHP binary.
+export PATH="/Users/v/Library/Application Support/Herd/bin/":$PATH
+
+
+# Herd injected PHP binary.
+export PATH="/Users/v/Library/Application Support/Herd/bin/":$PATH
+
+
+# Herd injected PHP binary.
+export PATH="/Users/v/Library/Application Support/Herd/bin/":$PATH
+
+
+# Herd injected PHP binary.
+export PATH="/Users/v/Library/Application Support/Herd/bin/":$PATH
+
+
+# Herd injected PHP binary.
+export PATH="/Users/v/Library/Application Support/Herd/bin/":$PATH
+
+
+# Herd injected PHP binary.
+export PATH="/Users/v/Library/Application Support/Herd/bin/":$PATH
+
+
+# Herd injected PHP binary.
+export PATH="/Users/v/Library/Application Support/Herd/bin/":$PATH
+
+
+# Herd injected PHP binary.
+export PATH="/Users/v/Library/Application Support/Herd/bin/":$PATH
+
+
+# Herd injected PHP binary.
+export PATH="/Users/v/Library/Application Support/Herd/bin/":$PATH
+
+
+# Herd injected PHP binary.
+export PATH="/Users/v/Library/Application Support/Herd/bin/":$PATH
+
+
+# Herd injected PHP binary.
+export PATH="/Users/v/Library/Application Support/Herd/bin/":$PATH
+
+
+# Herd injected PHP binary.
+export PATH="/Users/v/Library/Application Support/Herd/bin/":$PATH
+
+
+# Herd injected PHP binary.
+export PATH="/Users/v/Library/Application Support/Herd/bin/":$PATH
+
+
+# Herd injected PHP binary.
+export PATH="/Users/v/Library/Application Support/Herd/bin/":$PATH
+
+
+# Herd injected PHP binary.
+export PATH="/Users/v/Library/Application Support/Herd/bin/":$PATH
