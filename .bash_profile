@@ -97,3 +97,19 @@ export PATH="/Users/v/Library/Application Support/Herd/bin/":$PATH
 
 # Herd injected PHP binary.
 export PATH="/Users/v/Library/Application Support/Herd/bin/":$PATH
+
+
+# Herd injected PHP binary.
+export PATH="/Users/v/Library/Application Support/Herd/bin/":$PATH
+
+
+# Herd injected PHP binary.
+export PATH="/Users/v/Library/Application Support/Herd/bin/":$PATH
+
+
+# Herd injected PHP binary.
+export PATH="/Users/v/Library/Application Support/Herd/bin/":$PATH
+
+
+# Herd injected PHP binary.
+export PATH="/Users/v/Library/Application Support/Herd/bin/":$PATH
