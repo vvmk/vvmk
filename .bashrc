@@ -9,9 +9,7 @@ export PATH="~/bin:$PATH"
 # use gnu coreutils, keep after /usr/local/sbin
 export GNUBINS="/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/make/libexec/gnubin:/usr/local/opt/gawk/libexec/gnubin:/usr/local/opt/gsed/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:/usr/local/opt/gnu-tar/libexec/gnubin:/usr/local/opt/coreutils/libexec/gnubin";
 export PATH=$bindir:$PATH;
-
-# Load RVM into a shell session *as a function*
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+export PATH="$HOME/.rvm/bin:$PATH"
 
 EDITOR=vim; export EDITOR
 
@@ -29,9 +27,6 @@ eval $(thefuck --alias)
 alias tinker='php artisan tinker'
 alias mfs='php artisan migrate:fresh && php artisan db:seed'
 alias jigsaw='./vendor/bin/jigsaw'
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
 
 # shell customization {
 export PS1="\[\033[36m\]\u\[\033[0m\]\$\[\e[0m\] "
@@ -101,10 +96,11 @@ dush () {
 flushdns () {
   sudo killall -HUP mDNSResponder
 }
-tailwind-watch () {
+
+tailwindwatch () {
   npx tailwindcss -i ./src/base.css -o ./out.css --watch
 }
-tailwind-build () {
+tailwindbuild () {
   npx tailwindcss -i ./src/base.css -o ./out.css
 }
 
