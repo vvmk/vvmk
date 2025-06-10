@@ -1,3 +1,4 @@
+defaults write NSGlobalDomain com.apple.mouse.linear -bool "true"
 defaults write com.apple.finder QuitMenuItem -bool true
 defaults write NSGlobalDomain KeyRepeat -int 1
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
@@ -12,7 +13,7 @@ defaults write com.apple.Dock autohide-delay -float 0
 defaults write com.apple.dock launchanim -bool false
 defaults write com.apple.dock itunes-notifications -bool true
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
-defaults write com.apple.addressbook ABShowDebugMenu -bool true
+defaults write com.apple.contacts ABShowDebugMenu -bool true
 defaults write com.apple.iCal IncludeDebugMenu -bool true
 defaults write com.apple.iTunes NSUserKeyEquivalents -dict-add "Target Search Field" "@F"
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
@@ -38,5 +39,5 @@ defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 defaults write com.apple.menuextra.battery ShowPercent -string "NO"
 defaults write com.apple.menuextra.battery ShowTime -string "YES"
 defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
-for app in Finder Dock iTunes iCal Address\ Book SystemUIServer; do killall "$app" > /dev/null 2>&1; done
+for app in Finder Dock Music Calendar Contacts SystemUIServer; do killall "$app" > /dev/null 2>&1; done
 echo 'done! (Some of these need a restart to take effect)'
