@@ -1,3 +1,6 @@
+export BASH_SILENCE_DEPRECATION_WARNING=1
+eval "$(/usr/local/bin/brew shellenv)"
+
 # path dump
 export GOPATH=/Users/v/go
 export PATH=$PATH:$GOPATH/bin:/Users/v/code/exercism/go
@@ -31,7 +34,7 @@ alias jigsaw='./vendor/bin/jigsaw'
 # shell customization {
 export PS1="\[\033[36m\]\u\[\033[0m\]\$\[\e[0m\] "
 export CLICOLOR=1
-export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
+# export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 # }
 
 # aliases - all
